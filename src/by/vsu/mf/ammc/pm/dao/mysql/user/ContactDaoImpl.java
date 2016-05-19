@@ -24,9 +24,9 @@ public class ContactDaoImpl extends BaseDao implements ContactDao {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sqlScript);
-            statement.setString(1,contact.getName());
-            statement.setInt(2,contact.getUser().getId());
-            statement.setInt(3,contact.getType().getId());
+            statement.setString(1, contact.getName());
+            statement.setInt(2, contact.getUser().getId());
+            statement.setInt(3, contact.getType().getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -45,7 +45,7 @@ public class ContactDaoImpl extends BaseDao implements ContactDao {
 
         try {
             statement = connection.prepareStatement(sqlScript);
-            statement.setLong(1, id);
+            statement.setInt(1, id);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 contact = new Contact();
@@ -54,7 +54,6 @@ public class ContactDaoImpl extends BaseDao implements ContactDao {
                 contact.setUser(resultSet.getObject("user_id", User.class));
                 contact.setType(resultSet.getObject("type_id", ContactsType.class));
             }
-
         } catch (SQLException e) {
             throw new DaoException(e);
         }
