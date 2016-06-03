@@ -4,7 +4,7 @@ INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (2, 'Universi
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (3, 'University(student) category', 2);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (4, 'University(teacher) category', 2);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (5, 'IT Company category', 5);
-INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (6, 'Banks category\r\n\r\n', 6);
+INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (6, 'Banks category', 6);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (7, 'Medicine category', 7);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (8, 'Medicine( pharmacy) category', 7);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (9, 'Medicine( Emergency Room) category', 7);
