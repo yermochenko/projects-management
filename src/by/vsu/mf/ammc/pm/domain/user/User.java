@@ -10,7 +10,7 @@ public class User extends NamedEntity {
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private Boolean admin;
+	private boolean admin;
 	private UsersGroup group;
 	private List<Contact> contacts = new ArrayList<>();
 
@@ -46,11 +46,11 @@ public class User extends NamedEntity {
 		this.lastName = lastName;
 	}
 
-	public Boolean getAdmin() {
+	public boolean isAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 
