@@ -1,5 +1,4 @@
-#Записи в таблице project_category
-
+--Записи в таблице project_category
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (2, 'University category', 2);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (3, 'University(student) category', 2);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (4, 'University(teacher) category', 2);
@@ -9,7 +8,8 @@ INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (7, 'Medicine
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (8, 'Medicine( pharmacy) category', 7);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (9, 'Medicine( Emergency Room) category', 7);
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (10, 'Web technology category', 10);
-#Записи в таблице project
+
+--Записи в таблице project
 INSERT INTO `project` (`id`, `name`, `description`, `category_id`, `manager_id`) VALUES (4, 'Statement of the educational process', 'Timetable of classes ,tests, exams, retake', 2, 10);
 INSERT INTO `project` (`id`, `name`, `description`, `category_id`, `manager_id`) VALUES (7, 'Аmbulance project', 'Сustomer requirements', 9, 8);
 INSERT INTO `project` (`id`, `name`, `description`, `category_id`, `manager_id`) VALUES (14, 'Banking system', 'Castumer requirements "Belinvestbank"', 6, 3);

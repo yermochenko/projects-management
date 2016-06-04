@@ -1,4 +1,4 @@
-#Записи в таблицe "user_group"
+--Записи в таблицe "user_group"
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (1, 'VSU', NULL);
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (2, 'The Faculty of Mathematics', 1);
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (3, 'The Faculty of Law', 1);
@@ -15,7 +15,7 @@ INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (13, 'Subgroup_1 (4
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (14, 'Subgroup_2 (41)', 11);
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (15, 'Applied Mathematics and Mechanics', 2);
 
-#Записи в таблицe "user"
+--Записи в таблицe "user"
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (1, 'Admin', 'admin', 'Sergey', 'Aleksandrovich', 'Ermochenko', 1, 15);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (2, 'Tima', 't123', 'Timofei', 'Mikhailovich', 'Mironenko', 0, 13);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (3, 'Borya', 'mfgood', 'Boris', 'Andreevich', 'Petrenko', 0, 13);
@@ -27,13 +27,13 @@ INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (9, 'Nastya', 'vdsjk76', 'Anastasiya', 'Aleksandrovna', 'Sapezhinskaya', 0, 14);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (10, 'Vlad', 've3kf', 'Vladislav', 'Ivanovich', 'Lyalugo', 0, 13);
 
-#Записи в таблице "project_category"
+--Записи в таблице "project_category"
 INSERT INTO `projects_category` (`id`, `name`, `parent_id`) VALUES (1, 'test category', NULL);
 
-#Записи в таблице "project"
+--Записи в таблице "project"
 INSERT INTO `project` (`id`, `name`, `description`, `category_id`, `manager_id`) VALUES (1, 'test', NULL, 1, 5);
 
-#Записи в таблице "team"
+--Записи в таблице "team"
 INSERT INTO `team` (`id`, `project_id`, `leader_id`) VALUES (1, 1, 4);
 INSERT INTO `team` (`id`, `project_id`, `leader_id`) VALUES (2, 1, 5);
 INSERT INTO `team` (`id`, `project_id`, `leader_id`) VALUES (3, 1, 3);
