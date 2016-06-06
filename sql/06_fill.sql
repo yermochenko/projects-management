@@ -1,7 +1,7 @@
 --Записи в таблице "contact_type"
-INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (1, 'email', '^[a-zA-Z]([.]?([a-zA-Z0-9_-]+)*)?@([a-zA-Z0-9\\-_]+\\.)+[a-zA-Z]{2,4}$');
-INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (2, 'telephone', '^([+]375)[0-9]{9}');
-INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (3, 'addres', '');
+INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (1, 'email', '^[a-zA-Z](\\.[a-zA-Z0-9_\\-]+)*?@([a-zA-Z0-9_\\-]+\\.)+[a-zA-Z]{2,4}$');
+INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (2, 'telephone', '^([+]375)[0-9]{9}$');
+INSERT INTO `contacts_type` (`id`, `name`, `regexp`) VALUES (3, 'addres', '^((https|ftp)\\:\\/\\/)?[a-z0-9]+(\\.[a-z0-9_\\-])*\\.[a-z]{2,4}$');
 
 --Записи в таблице "contact"
 INSERT INTO `contact` (`id`, `name`, `user_id`, `type_id`) VALUES (1, '+375555666', 1, 2);
