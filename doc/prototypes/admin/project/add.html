@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Редактирование проекта</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="../user/list.html">Пользователи</A></LI>
+				<LI class="item"><A href="list.html" class="current">Проекты</A></LI>
+				<LI class="item"><A href="../contacts-type/list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="../tasks-category/list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: <A href="list.html">Проекты</A> :: Редактирование проекта</DIV>
+				<H2>Редактирование проекта</H2>
+				<DIV id="page">
+					<DIV class="main-column">
+						<H3>Новый проект</H3>
+						<FORM action="edit.html">
+							<LABEL for="name">Название:</LABEL>
+							<INPUT type="text" id="name" value="">
+							<LABEL for="manager">Менеджер:</LABEL>
+							<SELECT id="manager">
+								<OPTION>Иванов&nbsp;И.&nbsp;И.</OPTION>
+								<OPTION>Петров&nbsp;П.&nbsp;П.</OPTION>
+								<OPTION>Сидоров&nbsp;С.&nbsp;С.</OPTION>
+								<OPTION>Васильев&nbsp;В.&nbsp;В.</OPTION>
+								<OPTION>Андреев&nbsp;А.&nbsp;А.</OPTION>
+								<OPTION>Сергеев&nbsp;С.&nbsp;С.</OPTION>
+								<OPTION>Юрьев&nbsp;Ю.&nbsp;Ю.</OPTION>
+								<OPTION>Александров&nbsp;А.&nbsp;А.</OPTION>
+								<OPTION>Борисов&nbsp;Б.&nbsp;Б.</OPTION>
+								<OPTION>Геннадьев&nbsp;Г.&nbsp;Г.</OPTION>
+								<OPTION>Дмитриев&nbsp;Д.&nbsp;Д.</OPTION>
+								<OPTION>Егоров&nbsp;Е.&nbsp;Е.</OPTION>
+								<OPTION>Константинов&nbsp;К.&nbsp;К.</OPTION>
+							</SELECT>
+							<LABEL for="category">Категория:</LABEL>
+							<SELECT id="category">
+								<OPTION>Сайты</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Интернет-магазины</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Интернет-порталы</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMS</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Drupal</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wordpress</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Свой движок на PHP</OPTION>
+								<OPTION>Информационные системы</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Толстый клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Кроссплатформенный клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows-клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мобильный клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Тонкий клиент</OPTION>
+							</SELECT>
+							<BUTTON type="submit">Сохранить</BUTTON>
+							<BUTTON type="reset">Очистить форму</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Отменить</BUTTON>
+						</FORM>
+					</DIV>
+					<DIV class="side-column">
+						<H3>Категории проектов</H3>
+						<UL>
+							<LI><A href="list.html">Сайты</A>
+								<UL class="nested">
+									<LI><A href="list.html">Интернет-магазины</A></LI>
+									<LI><A href="list.html">Интернет-порталы</A>
+										<UL class="nested">
+											<LI><A href="list.html">CMS</A>
+												<UL class="nested">
+													<LI><A href="list.html">Drupal</A></LI>
+													<LI><A href="list.html">Wordpress</A></LI>
+												</UL>
+											</LI>
+											<LI><A href="list.html">Свой движок на PHP</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+							<LI><A href="list.html">Информационные системы</A>
+								<UL class="nested">
+									<LI><A href="list.html">Толстый клиент</A>
+										<UL class="nested">
+											<LI><A href="list.html">Кроссплатформенный клиент</A></LI>
+											<LI><A href="list.html">Windows-клиент</A></LI>
+											<LI><A href="list.html">Мобильный клиент</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Тонкий клиент</A></LI>
+								</UL>
+							</LI>
+						</UL>
+						<FORM action="../projects-category/list.html">
+							<BUTTON type="submit">Редактировать категории</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Редактирование группы пользователей</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="../user/list.html" class="current">Пользователи</A></LI>
+				<LI class="item"><A href="../project/list.html">Проекты</A></LI>
+				<LI class="item"><A href="../contacts-type/list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="../tasks-category/list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: <A href="../user/list.html">Пользователи</A> :: <A href="list.html">Группы пользователей</A> :: Редактирование группы пользователей</DIV>
+				<H2>Редактирование группы пользователей</H2>
+				<DIV id="page">
+					<DIV class="single-column">
+						<H3>Группа пользователей «Прикладная информатика»</H3>
+						<FORM action="list.html" onsubmit="show('Группа пользователей успешно сохранена'); return false;">
+							<LABEL for="group">Родительская группа:</LABEL>
+							<SELECT id="group">
+								<OPTION>&ndash;</OPTION>
+								<OPTION>1 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Программное обеспечение информационных технологий</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15 группа</OPTION>
+								<OPTION>2 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25 группа</OPTION>
+								<OPTION>3 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35 группа</OPTION>
+								<OPTION>4 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;41 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;43 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45 группа</OPTION>
+								<OPTION>5 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;51 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;52 группа</OPTION>
+							</SELECT>
+							<LABEL for="name">Название группы:</LABEL>
+							<INPUT type="text" id="name" value="Прикладная информатика">
+							<BUTTON type="submit">Сохранить</BUTTON>
+							<BUTTON type="reset">Очистить форму</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Удалить</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Отменить</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>

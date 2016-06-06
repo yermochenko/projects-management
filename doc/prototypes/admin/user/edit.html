@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Редактирование пользователя</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="list.html" class="current">Пользователи</A></LI>
+				<LI class="item"><A href="../project/list.html">Проекты</A></LI>
+				<LI class="item"><A href="../contacts-type/list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="../tasks-category/list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: <A href="list.html">Пользователи</A> :: Редактироване пользователя</DIV>
+				<H2>Редактирование пользователя</H2>
+				<DIV id="page">
+					<DIV class="main-column">
+						<H3>Пользователь «root»</H3>
+						<FORM action="edit.html">
+							<LABEL for="name">Псевдоним:</LABEL>
+							<INPUT type="text" id="name" value="root">
+							<LABEL for="last-name">Фамилия:</LABEL>
+							<INPUT type="text" id="last-name" value="Иванов">
+							<LABEL for="first-name">Имя:</LABEL>
+							<INPUT type="text" id="first-name" value="Иван">
+							<LABEL for="middle-name">Отчество:</LABEL>
+							<INPUT type="text" id="middle-name" value="Иванович">
+							<LABEL for="group">Группа:</LABEL>
+							<SELECT id="group">
+								<OPTION>1 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Программное обеспечение информационных технологий</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15 группа</OPTION>
+								<OPTION>2 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25 группа</OPTION>
+								<OPTION>3 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;33 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35 группа</OPTION>
+								<OPTION>4 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная информатика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;41 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;43 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45 группа</OPTION>
+								<OPTION>5 курс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Прикладная математика</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;51 группа</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;52 группа</OPTION>
+							</SELECT>
+							<LABEL for="is-admin"><INPUT type="checkbox" id="is-admin">Администратор</LABEL>
+							<BUTTON type="submit">Сохранить</BUTTON>
+							<BUTTON type="reset">Очистить форму</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Удалить</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Отменить</BUTTON>
+						</FORM>
+						<FORM action="edit.html">
+							<BUTTON type="submit">Сбросить пароль</BUTTON>
+						</FORM>
+					</DIV>
+					<DIV class="side-column">
+						<H3>Группы пользователей</H3>
+						<UL>
+							<LI><A href="list.html">1 курс</A>
+								<UL class="nested">
+									<LI><A href="list.html">Программное обеспечение информационных технологий</A>
+										<UL class="nested">
+											<LI><A href="list.html">14 группа</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Прикладная информатика</A>
+										<UL class="nested">
+											<LI><A href="list.html">11 группа</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Прикладная математика</A>
+										<UL class="nested">
+											<LI><A href="list.html">15 группа</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+							<LI><A href="list.html">2 курс</A>
+								<UL class="nested">
+									<LI><A href="list.html">Прикладная информатика</A>
+										<UL class="nested">
+											<LI><A href="list.html">21 группа</A></LI>
+											<LI><A href="list.html">23 группа</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Прикладная математика</A>
+										<UL class="nested">
+											<LI><A href="list.html">25 группа</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+							<LI><A href="list.html">3 курс</A>
+								<UL class="nested">
+									<LI><A href="list.html">Прикладная информатика</A>
+										<UL class="nested">
+											<LI><A href="list.html">31 группа</A></LI>
+											<LI><A href="list.html">33 группа</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Прикладная математика</A>
+										<UL class="nested">
+											<LI><A href="list.html">35 группа</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+							<LI><A href="list.html">4 курс</A>
+								<UL class="nested">
+									<LI><A href="list.html">Прикладная информатика</A>
+										<UL class="nested">
+											<LI><A href="list.html">41 группа</A></LI>
+											<LI><A href="list.html">43 группа</A></LI>
+										</UL>
+									</LI>
+									<LI><A href="list.html">Прикладная математика</A>
+										<UL class="nested">
+											<LI><A href="list.html">45 группа</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+							<LI><A href="list.html">5 курс</A>
+								<UL class="nested">
+									<LI><A href="list.html">Прикладная математика</A>
+										<UL class="nested">
+											<LI><A href="list.html">51 группа</A></LI>
+											<LI><A href="list.html">52 группа</A></LI>
+										</UL>
+									</LI>
+								</UL>
+							</LI>
+						</UL>
+						<FORM action="../users-group/list.html">
+							<BUTTON type="submit">Редактировать группы</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>

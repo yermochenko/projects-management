@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Типы контактов</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="../user/list.html">Пользователи</A></LI>
+				<LI class="item"><A href="../project/list.html">Проекты</A></LI>
+				<LI class="item"><A href="list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="../tasks-category/list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: Типы контактов</DIV>
+				<H2>Типы контактов</H2>
+				<DIV id="page">
+					<DIV class="single-column">
+						<H3>Список типов контактов</H3>
+						<TABLE>
+							<TR>
+								<TH class="insignificant">№</TH>
+								<TH>Название</TH>
+								<TH>Регулярное выражение</TH>
+							</TR>
+							<TR>
+								<TD class="insignificant">1</TD>
+								<TD><A href="edit.html">Адрес электронной почты</A></TD>
+								<TD><CODE>[a-zA-Z](\-|\w)*@(\-|\w)+(\.(\-|\w)+)+</CODE></TD>
+							</TR>
+							<TR>
+								<TD class="insignificant">2</TD>
+								<TD><A href="edit.html">Номер мобильного телефона</A></TD>
+								<TD><CODE>\+\d{1,5}\-\d{2}\-\d{3}(\-\d{2}){2}</CODE></TD>
+							</TR>
+							<TR>
+								<TD class="insignificant">3</TD>
+								<TD><A href="edit.html">Номер домашнего телефона</A></TD>
+								<TD><CODE>\d{2,3}(\-\d{2}){2}</CODE></TD>
+							</TR>
+						</TABLE>
+						<FORM action="add.html">
+							<BUTTON type="submit">Добавить тип контактов</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>

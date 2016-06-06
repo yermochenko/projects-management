@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Редактирование категории проектов</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="../user/list.html">Пользователи</A></LI>
+				<LI class="item"><A href="../project/list.html" class="current">Проекты</A></LI>
+				<LI class="item"><A href="../contacts-type/list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="../tasks-category/list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: <A href="../project/list.html">Проекты</A> :: <A href="list.html">Категории проектов</A> :: Редактирование категории проектов</DIV>
+				<H2>Редактирование категории проектов</H2>
+				<DIV id="page">
+					<DIV class="single-column">
+						<H3>Новая категория проектов</H3>
+						<FORM action="list.html">
+							<LABEL for="category">Родительская категория:</LABEL>
+							<SELECT id="category">
+								<OPTION>&ndash;</OPTION>
+								<OPTION>Сайты</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Интернет-магазины</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Интернет-порталы</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMS</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Drupal</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wordpress</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Свой движок на PHP</OPTION>
+								<OPTION>Информационные системы</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Толстый клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Кроссплатформенный клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows-клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мобильный клиент</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Тонкий клиент</OPTION>
+							</SELECT>
+							<LABEL for="name">Название категории:</LABEL>
+							<INPUT type="text" id="name" value="">
+							<BUTTON type="submit">Сохранить</BUTTON>
+							<BUTTON type="reset">Очистить форму</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Отменить</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>

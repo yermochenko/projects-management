@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<TITLE>Управление проектами - Редактирование категории заданий</TITLE>
+		<LINK rel="stylesheet" type="text/css" href="../../main.css">
+	</HEAD>
+	<BODY>
+		<DIV id="header">
+			<H1>Управление<BR>Проектами</H1>
+			<UL class="right">
+				<LI class="item"><A href="../user/list.html">Пользователи</A></LI>
+				<LI class="item"><A href="../project/list.html">Проекты</A></LI>
+				<LI class="item"><A href="../contacts-type/list.html">Типы контактов</A></LI>
+				<LI class="item"><A href="list.html">Категории заданий</A></LI>
+			</UL>
+		</DIV>
+		<DIV id="wrapper">
+			<DIV id="content">
+				<DIV id="breadcrumbs"><A href="../../index.html">Главная</A> :: <A href="../project/list.html">Проекты</A> :: <A href="list.html">Категории заданий</A> :: Редактирование категории заданий</DIV>
+				<H2>Редактирование категории заданий</H2>
+				<DIV id="page">
+					<DIV class="single-column">
+						<H3>Новая категория заданий</H3>
+						<FORM action="list.html">
+							<LABEL for="category">Родительская категория:</LABEL>
+							<SELECT id="category">
+								<OPTION>&ndash;</OPTION>
+								<OPTION>Front-end</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Валидация данных</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Пользовательский интерфейс</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Удобство использования</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Интернационализация</OPTION>
+								<OPTION>Back-end</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Работа с источником данных</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка запросов</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка транзакций</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Кэширование данных</OPTION>
+								<OPTION>&nbsp;&nbsp;&nbsp;&nbsp;Реализация логики</OPTION>
+							</SELECT>
+							<LABEL for="name">Название категории:</LABEL>
+							<INPUT type="text" id="name" value="">
+							<BUTTON type="submit">Сохранить</BUTTON>
+							<BUTTON type="reset">Очистить форму</BUTTON>
+						</FORM>
+						<FORM action="list.html">
+							<BUTTON type="submit">Отменить</BUTTON>
+						</FORM>
+					</DIV>
+				</DIV>
+				<DIV id="copyright">&copy; Лаборатория компьютерных технологий ВГУ имени П.&nbsp;М.&nbsp;Машерова</DIV>
+			</DIV>
+		</DIV>
+	</BODY>
+</HTML>
