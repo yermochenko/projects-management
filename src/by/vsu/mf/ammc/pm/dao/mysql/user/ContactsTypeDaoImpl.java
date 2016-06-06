@@ -76,7 +76,7 @@ public class ContactsTypeDaoImpl extends BaseDao implements ContactsTypeDao {
 			resultSet = statement.executeQuery(sqlScript);
 			List<ContactsType> contactsTypes = new ArrayList<>();
 			ContactsType contactsType = null;
-			if(resultSet.next()) {
+			while(resultSet.next()) {
 				contactsType = new ContactsType();
 				contactsType.setId(resultSet.getInt("id"));
 				contactsType.setName(resultSet.getString("name"));
