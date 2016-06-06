@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.vsu.mf.ammc.pm.dao.mysql.BaseDao;
 import by.vsu.mf.ammc.pm.dao.user.ContactsTypeDao;
@@ -54,6 +57,33 @@ public class ContactsTypeDaoImpl extends BaseDao implements ContactsTypeDao {
 				contactsType.setRegexp(resultSet.getString("regexp"));
 			}
 			return contactsType;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
+			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+		}
+	}
+
+	@Override
+	public List<ContactsType> read() throws DaoException {
+		String sqlScript = "SELECT `id`, `name`, `regexp` FROM `contacts_type`";
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sqlScript);
+			List<ContactsType> contactsTypes = new ArrayList<>();
+			ContactsType contactsType = null;
+			if(resultSet.next()) {
+				contactsType = new ContactsType();
+				contactsType.setId(resultSet.getInt("id"));
+				contactsType.setName(resultSet.getString("name"));
+				contactsType.setRegexp(resultSet.getString("regexp"));
+				contactsTypes.add(contactsType);
+			}
+			return contactsTypes;
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
