@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<display-name>Управление проектами</display-name>
+
+	<welcome-file-list><welcome-file>index.html</welcome-file></welcome-file-list>
+
+	<context-param><param-name>jdbc-driver</param-name><param-value>com.mysql.jdbc.Driver</param-value></context-param>
+	<context-param><param-name>jdbc-url</param-name><param-value>jdbc:mysql://localhost:3306/pm_db?useUnicode=true&amp;characterEncoding=UTF-8</param-value></context-param>
+	<context-param><param-name>jdbc-user</param-name><param-value>pm_user</param-value></context-param>
+	<context-param><param-name>jdbc-password</param-name><param-value>pm_password</param-value></context-param>
+
+</web-app>
