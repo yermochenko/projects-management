@@ -10,7 +10,7 @@ INSERT INTO `actor` (`id`, `name`, `project_id`) VALUES (8, 'den', 19);
 INSERT INTO `actor` (`id`, `name`, `project_id`) VALUES (9, 'klava', 22);
 INSERT INTO `actor` (`id`, `name`, `project_id`) VALUES (10, 'petya', 24);
 
---Записи в таблице actor_relation
+--Записи в таблице actors_relation
 INSERT INTO `actors_relation` (`id`, `parent_id`, `child_id`) VALUES (1, 1, 1);
 INSERT INTO `actors_relation` (`id`, `parent_id`, `child_id`) VALUES (2, 2, 1);
 INSERT INTO `actors_relation` (`id`, `parent_id`, `child_id`) VALUES (3, 3, 2);
