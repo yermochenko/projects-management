@@ -1,6 +1,7 @@
 package by.vsu.mf.ammc.pm.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ public class MainServlet extends HttpServlet {
 
 	static {
 		menu = new HashMap<>();
+		List<MainMenuItem> adminMenu = new ArrayList<>();
+		adminMenu.add(new MainMenuItem("/contacts-type/list.html", "Типы контактов"));
+		menu.put("admin", adminMenu);
 	}
 
 	@Override
