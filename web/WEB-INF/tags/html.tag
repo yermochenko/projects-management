@@ -25,6 +25,8 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+					<c:url var="menuUrl" value="/exit.html"/>
+					<LI class="item"><A href="${menuUrl}">Выход</A></LI>
 				</UL>
 			</c:if>
 		</DIV>
