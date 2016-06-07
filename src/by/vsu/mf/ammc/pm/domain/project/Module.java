@@ -12,4 +12,5 @@ public class Module extends HierarchyEntity<Module> {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+
 }
