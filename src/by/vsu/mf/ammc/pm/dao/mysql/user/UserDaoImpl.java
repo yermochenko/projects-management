@@ -1,9 +1,8 @@
 package by.vsu.mf.ammc.pm.dao.mysql.user;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.vsu.mf.ammc.pm.dao.mysql.BaseDao;
 import by.vsu.mf.ammc.pm.dao.user.UserDao;
@@ -112,4 +111,36 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			try { statement.close(); } catch(NullPointerException | SQLException e) {}
 		}
 	}
+
+    @Override
+    public List<User> read() throws DaoException {
+        String sqlScript = "SELECT `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id` FROM `user` WHERE `id` = ?";
+        Connection connection = getConnection();
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sqlScript);
+            List<User> users  = new ArrayList<>();
+            User user = null;
+            if(resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setPassword(resultSet.getString("password"));
+                user.setFirstName(resultSet.getString("first_name"));
+                user.setMiddleName(resultSet.getString("middle_name"));
+                user.setLastName(resultSet.getString("last_name"));
+                user.setAdmin(resultSet.getBoolean("is_admin"));
+                user.setGroup(new UsersGroup());
+                user.getGroup().setId(resultSet.getInt("group_id"));
+                users.add(user);
+            }
+            return users;
+        } catch(SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
+            try { statement.close(); } catch(NullPointerException | SQLException e) {}
+        }    }
 }
