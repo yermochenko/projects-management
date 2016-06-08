@@ -28,12 +28,12 @@ public class UserSaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = null;
 //        Integer user_id = null;
-        //Integer group_id = null;
+        Integer group_id = null;
         Boolean is_admin = null;
         try {
             id = Integer.parseInt(req.getParameter("id"));
 //            user_id = Integer.parseInt(req.getParameter("user_id"));
-//            group_id = Integer.parseInt(req.getParameter("group_id"));
+            group_id = Integer.parseInt(req.getParameter("group_id"));
             is_admin = Boolean.parseBoolean(req.getParameter("is_admin"));
         } catch(NumberFormatException e) {}
         String name = req.getParameter("name");
@@ -51,7 +51,7 @@ public class UserSaveServlet extends HttpServlet {
             type.setFirstName(first_name);
             type.setMiddleName(middle_name);
             type.setLastName(last_name);
-//            type.setGroup();
+//            type.setGroup(UserGroupService.findById(group_id));
             type.setAdmin(is_admin);
             ServiceLocator locator = null;
             try {
