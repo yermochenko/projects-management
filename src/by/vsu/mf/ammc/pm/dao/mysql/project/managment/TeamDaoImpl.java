@@ -1,9 +1,8 @@
 package by.vsu.mf.ammc.pm.dao.mysql.project.managment;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.vsu.mf.ammc.pm.dao.mysql.BaseDao;
 import by.vsu.mf.ammc.pm.dao.project.management.TeamDao;
@@ -96,6 +95,37 @@ public class TeamDaoImpl extends BaseDao implements TeamDao {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
+			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+		}
+	}
+
+	@Override
+	public List<Team> readByProject(Integer projectId) throws DaoException {
+		String sqlScript = "SELECT `id`, `leader_id` FROM `team` WHERE `project_id` = ?";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sqlScript);
+			statement.setInt(1, projectId);
+			resultSet = statement.executeQuery();
+			List<Team> teams = new ArrayList<>();
+			Team team = null;
+			Project project = new Project();
+			project.setId(projectId);
+			if(resultSet.next()) {
+				team = new Team();
+				team.setId(resultSet.getInt("id"));
+				team.setProject(project);
+				team.setLeader(new User());
+				team.getLeader().setId(resultSet.getInt("leader_id"));
+				teams.add(team);
+			}
+			return teams;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
 			try { statement.close(); } catch(NullPointerException | SQLException e) {}
 		}
 	}
