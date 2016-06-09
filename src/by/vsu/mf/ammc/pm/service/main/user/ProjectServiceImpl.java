@@ -1,13 +1,11 @@
 package by.vsu.mf.ammc.pm.service.main.user;
 
 import by.vsu.mf.ammc.pm.dao.project.ProjectDao;
-import by.vsu.mf.ammc.pm.dao.user.ContactsTypeDao;
+import by.vsu.mf.ammc.pm.dao.user.UserDao;
 import by.vsu.mf.ammc.pm.domain.project.Project;
-import by.vsu.mf.ammc.pm.domain.project.management.Team;
-import by.vsu.mf.ammc.pm.domain.user.ContactsType;
+import by.vsu.mf.ammc.pm.domain.user.User;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
-import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 import by.vsu.mf.ammc.pm.service.user.ProjectService;
 
 import java.util.List;
@@ -17,18 +15,26 @@ import java.util.List;
  */
 public class ProjectServiceImpl implements ProjectService {
     private ProjectDao dao;
+    private UserDao userDao;
 
     public void setDao(ProjectDao dao) {
         this.dao = dao;
     }
 
-
-
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public List<Project> findAll(Integer project_categoryId) throws ServiceException {
         try {
-            return dao.read();
+            List<Project> projects = dao.readByCategoryId(project_categoryId);
+            for(Project project : projects) {
+                User manager = project.getManager();
+                manager = userDao.read(manager.getId());
+                project.setManager(manager);
+            }
+            return projects;
         } catch(DaoException e) {
             throw new ServiceException(e);
         }
@@ -42,11 +48,6 @@ public class ProjectServiceImpl implements ProjectService {
         } catch(DaoException e) {
             throw new ServiceException(e);
         }
-    }
-
-    @Override
-    public void save(Team type) throws ServiceException {
-
     }
 
     @Override

@@ -48,8 +48,9 @@ public class ServiceLocator {
 			teamService.setTeamDao(teamDao);
 			teamService.setUserDao(userDao);
 
-			ProjectDaoImpl ProjectService = new ProjectDaoImpl();
-			projectDao.setDao(projectDao);
+			ProjectServiceImpl ProjectService = new ProjectServiceImpl();
+			ProjectService.setDao(projectDao);
+			ProjectService.setUserDao(userDao);
 
 
 			/* регистрация сервисов */

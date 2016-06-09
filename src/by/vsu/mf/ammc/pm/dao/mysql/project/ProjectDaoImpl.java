@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Pasha_R on 03.06.2016.
@@ -45,7 +47,7 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
 
     @Override
     public Project read(Integer key) throws DaoException {
-        String sqlScript = "SELECT `user_id`, `name`, `description`, `category_id`, `manager_id` FROM project WHERE `id` = ?";
+        String sqlScript = "SELECT `name`, `description`, `category_id`, `manager_id` FROM project WHERE `id` = ?";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -110,8 +112,8 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
         }
     }
     @Override
-    public Project readByProject_category(Integer project_categoryId) throws DaoException {
-        String sqlScript = "SELECT `id`, `name` FROM `project_category` WHERE `project_category_id` = ?";
+    public List<Project> readByCategoryId(Integer project_categoryId) throws DaoException {
+        String sqlScript = "SELECT `id`, `name`, `description`, `manager_id` FROM `project` WHERE `category_id` = ?";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -120,18 +122,20 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
             statement.setInt(1, project_categoryId);
             resultSet = statement.executeQuery();
             Project project = null;
-            if (resultSet.next()) {
+            List<Project> projects = new ArrayList<>();
+            ProjectsCategory category = new ProjectsCategory();
+            category.setId(project_categoryId);
+            while(resultSet.next()) {
                 project = new Project();
-                project.setId(project_categoryId);
+                project.setId(resultSet.getInt("id"));
                 project.setName(resultSet.getString("name"));
                 project.setDescription(resultSet.getString("description"));
-                project.setCategory(new ProjectsCategory());
-                project.getCategory().setId(resultSet.getInt("category_id"));
+                project.setCategory(category);
                 project.setManager(new User());
                 project.getManager().setId(resultSet.getInt("manager_id"));
-
+                projects.add(project);
             }
-            return project;
+            return projects;
         } catch(SQLException e) {
             throw new DaoException(e);
         } finally {
@@ -139,5 +143,5 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
             try { statement.close(); } catch(NullPointerException | SQLException e) {}
         }
     }
-    }
+}
 
