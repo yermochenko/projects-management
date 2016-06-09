@@ -44,7 +44,11 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project findById(Integer id) throws ServiceException {
         try {
-            return dao.read(id);
+            Project project = dao.read(id);
+            User manager = project.getManager();
+            manager = userDao.read(manager.getId());
+            project.setManager(manager);
+            return project;
         } catch(DaoException e) {
             throw new ServiceException(e);
         }

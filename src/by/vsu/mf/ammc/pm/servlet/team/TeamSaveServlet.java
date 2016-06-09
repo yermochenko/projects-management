@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by Timofei on 08.06.2016.
  */
-@WebServlet("/contacts-type/save.html")
+@WebServlet("/team/save.html")
 public class TeamSaveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

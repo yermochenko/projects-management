@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by Pasha_R on 08.06.2016.
  */
-@WebServlet("/Project/delete.html")
+@WebServlet("/project/delete.html")
 public class ProjectDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +35,6 @@ public class ProjectDeleteServlet extends HttpServlet {
                 try { locator.close(); } catch(NullPointerException | ServiceException e) {}
             }
         }
-        resp.sendRedirect(req.getContextPath() + "/Project/list.html");
+        resp.sendRedirect(req.getContextPath() + "/project/list.html");
     }
 }

@@ -13,8 +13,8 @@
 </c:if>
 <u:html title="Редактирование команды проектов">
     <c:url var="mainUrl" value="/index.html"/>
-    <c:url var="contactsTypesListUrl" value="/contacts-type/list.html"/>
-    <DIV id="breadcrumbs"><A href="${mainUrl}">Главная</A> :: <A href="${contactsTypesListUrl}">Команды проектов</A> :: Редактирование команды проектов</DIV>
+    <c:url var="projectListUrl" value="/contacts-type/list.html"/>
+    <DIV id="breadcrumbs"><A href="${mainUrl}">Главная</A> :: <A href="${projectListUrl}">Команды проектов</A> :: Редактирование команды проектов</DIV>
     <H2>Редактирование команды проектов</H2>
     <DIV id="page">
         <DIV class="single-column">
@@ -45,7 +45,7 @@
                     <BUTTON type="submit">Удалить</BUTTON>
                 </FORM>
             </c:if>
-            <FORM action="${contactsTypesListUrl}">
+            <FORM action="${projectListUrl}">
                 <BUTTON type="submit">Отменить</BUTTON>
             </FORM>
         </DIV>

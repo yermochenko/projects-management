@@ -78,16 +78,16 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
 
     @Override
     public void update(Project object) throws DaoException {
-        String sqlScript = "UPDATE `project` SET `user_id` = ?, `name` = ?, `description` = ?, `category_id` = ?, `manager_id` = ? WHERE `id` = ?";
+        String sqlScript = "UPDATE `project` SET `name` = ?, `description` = ?, `category_id` = ?, `manager_id` = ? WHERE `id` = ?";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sqlScript);
-            statement.setInt(1, object.getId());
-            statement.setString(2, object.getName());
-            statement.setString(3, object.getDescription());
-            statement.setInt(4, object.getCategory().getId());
-            statement.setInt(5, object.getManager().getId());
+            statement.setString(1, object.getName());
+            statement.setString(2, object.getDescription());
+            statement.setInt(3, object.getCategory().getId());
+            statement.setInt(4, object.getManager().getId());
+            statement.setInt(5, object.getId());
             statement.executeUpdate();
         } catch(SQLException e) {
             throw new DaoException(e);

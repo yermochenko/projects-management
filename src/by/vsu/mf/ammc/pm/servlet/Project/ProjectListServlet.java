@@ -1,9 +1,11 @@
 package by.vsu.mf.ammc.pm.servlet.Project;
 
+import by.vsu.mf.ammc.pm.domain.project.Project;
 import by.vsu.mf.ammc.pm.domain.user.ContactsType;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
+import by.vsu.mf.ammc.pm.service.user.ProjectService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,21 +18,27 @@ import java.util.List;
 /**
  * Created by Pasha_R on 08.06.2016.
  */
-@WebServlet("/Project/list.html")
+@WebServlet("/project/list.html")
 public class ProjectListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServiceLocator locator = null;
+        Integer id = null;
         try {
-            locator = new ServiceLocator();
-            ProjectService service = locator.getService(ProjectService.class);
-            List<Project> types = service.findAll();
-            req.setAttribute("types", types);
-            req.getRequestDispatcher("/WEB-INF/jsp/Project/list.jsp").forward(req, resp);
-        } catch(ServiceException e) {
-            throw new ServletException(e);
-        } finally {
-            try { locator.close(); } catch(NullPointerException | ServiceException e) {}
+            id = Integer.parseInt(req.getParameter("id"));
+        } catch (NumberFormatException e) {}
+        if(id != null) {
+            ServiceLocator locator = null;
+            try {
+                locator = new ServiceLocator();
+                ProjectService service = locator.getService(ProjectService.class);
+                List<Project> projects = service.findAll(id);
+                req.setAttribute("projects", projects);
+            } catch(ServiceException e) {
+                throw new ServletException(e);
+            } finally {
+                try { locator.close(); } catch(NullPointerException | ServiceException e) {}
+            }
         }
+        req.getRequestDispatcher("/WEB-INF/jsp/project/list.jsp").forward(req, resp);
     }
 }

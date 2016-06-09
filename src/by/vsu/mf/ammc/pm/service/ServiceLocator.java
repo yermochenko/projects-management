@@ -14,9 +14,11 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.main.user.ContactsTypeServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.ProjectServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.TeamServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.UserServiceImpl;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 import by.vsu.mf.ammc.pm.service.user.ProjectService;
 import by.vsu.mf.ammc.pm.service.user.TeamService;
+import by.vsu.mf.ammc.pm.service.user.UserService;
 
 public class ServiceLocator {
 	private Map<Class<?>, Object> services = new ConcurrentHashMap<>();
@@ -48,14 +50,19 @@ public class ServiceLocator {
 			teamService.setTeamDao(teamDao);
 			teamService.setUserDao(userDao);
 
-			ProjectServiceImpl ProjectService = new ProjectServiceImpl();
-			ProjectService.setDao(projectDao);
-			ProjectService.setUserDao(userDao);
+			ProjectServiceImpl projectService = new ProjectServiceImpl();
+			projectService.setDao(projectDao);
+			projectService.setUserDao(userDao);
+
+			UserServiceImpl userService = new UserServiceImpl();
+			userService.setDao(userDao);
 
 
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
 			services.put(TeamService.class, teamService);
+			services.put(ProjectService.class, projectService);
+			services.put(UserService.class, userService);
 		} catch(SQLException e) {
 			throw new ServiceException(e);
 		}

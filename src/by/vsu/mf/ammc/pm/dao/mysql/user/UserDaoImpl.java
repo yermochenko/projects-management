@@ -114,7 +114,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public List<User> read() throws DaoException {
-        String sqlScript = "SELECT `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id` FROM `user` WHERE `id` = ?";
+        String sqlScript = "SELECT `id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id` FROM `user`";
         Connection connection = getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
@@ -123,7 +123,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             resultSet = statement.executeQuery(sqlScript);
             List<User> users  = new ArrayList<>();
             User user = null;
-            if(resultSet.next()) {
+            while(resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setName(resultSet.getString("name"));
@@ -142,5 +142,6 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         } finally {
             try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
             try { statement.close(); } catch(NullPointerException | SQLException e) {}
-        }    }
+        }
+	}
 }
