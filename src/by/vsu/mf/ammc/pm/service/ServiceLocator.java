@@ -5,17 +5,18 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import by.vsu.mf.ammc.pm.dao.mysql.project.ProjectDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TeamDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.main.user.ContactsTypeServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.ProjectServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.TeamServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.UserServiceImpl;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
+import by.vsu.mf.ammc.pm.service.user.ProjectService;
 import by.vsu.mf.ammc.pm.service.user.TeamService;
-import by.vsu.mf.ammc.pm.service.user.UserService;
 
 public class ServiceLocator {
 	private Map<Class<?>, Object> services = new ConcurrentHashMap<>();
@@ -30,26 +31,29 @@ public class ServiceLocator {
 			ContactsTypeDaoImpl contactsTypeDao = new ContactsTypeDaoImpl();
 			contactsTypeDao.setConnection(connection);
 
+			TeamDaoImpl teamDao = new TeamDaoImpl();
+			teamDao.setConnection(connection);
+
 			UserDaoImpl userDao = new UserDaoImpl();
 			userDao.setConnection(connection);
 
-			TeamDaoImpl teamDao = new TeamDaoImpl();
-			teamDao.setConnection(connection);
+			ProjectDaoImpl projectDao = new ProjectDaoImpl();
+			projectDao.setConnection(connection);
 
 			/* создание объектов слоя сервисов */
 			ContactsTypeServiceImpl contactsTypeService = new ContactsTypeServiceImpl();
 			contactsTypeService.setDao(contactsTypeDao);
 
-			UserServiceImpl userService = new UserServiceImpl();
-			userService.setDao(userDao);
-
 			TeamServiceImpl teamService = new TeamServiceImpl();
 			teamService.setTeamDao(teamDao);
 			teamService.setUserDao(userDao);
 
+			ProjectDaoImpl ProjectService = new ProjectDaoImpl();
+			projectDao.setDao(projectDao);
+
+
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
-			services.put(UserService.class, userService);
 			services.put(TeamService.class, teamService);
 		} catch(SQLException e) {
 			throw new ServiceException(e);

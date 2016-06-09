@@ -15,6 +15,9 @@ import java.sql.SQLException;
 /**
  * Created by Pasha_R on 03.06.2016.
  */
+
+
+
 public class ProjectDaoImpl extends BaseDao implements ProjectDao {
     @Override
     public Integer create(Project object) throws DaoException {
@@ -103,6 +106,36 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
         } catch(SQLException e) {
             throw new DaoException(e);
         } finally {
+            try { statement.close(); } catch(NullPointerException | SQLException e) {}
+        }
+    }
+    @Override
+    public Project readByProject_category(Integer project_categoryId) throws DaoException {
+        String sqlScript = "SELECT `id`, `name` FROM `project_category` WHERE `project_category_id` = ?";
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(sqlScript);
+            statement.setInt(1, project_categoryId);
+            resultSet = statement.executeQuery();
+            Project project = null;
+            if (resultSet.next()) {
+                project = new Project();
+                project.setId(project_categoryId);
+                project.setName(resultSet.getString("name"));
+                project.setDescription(resultSet.getString("description"));
+                project.setCategory(new ProjectsCategory());
+                project.getCategory().setId(resultSet.getInt("category_id"));
+                project.setManager(new User());
+                project.getManager().setId(resultSet.getInt("manager_id"));
+
+            }
+            return project;
+        } catch(SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
             try { statement.close(); } catch(NullPointerException | SQLException e) {}
         }
     }
