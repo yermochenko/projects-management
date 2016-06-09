@@ -1,9 +1,8 @@
 package by.vsu.mf.ammc.pm.dao.mysql.project.managment;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.vsu.mf.ammc.pm.dao.mysql.BaseDao;
 import by.vsu.mf.ammc.pm.dao.project.management.TasksCategoryDao;
@@ -55,6 +54,34 @@ public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 				category.getParent().setId(resultSet.getInt("parent_id"));
 			}
 			return category;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
+			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+		}
+	}
+
+	@Override
+	public List<TasksCategory> read() throws DaoException {
+		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `task_category`";
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sqlScript);
+			List<TasksCategory> tasksCategory = new ArrayList<>();
+			TasksCategory tasksCategory1 = null;
+			while(resultSet.next()) {
+				tasksCategory1 = new TasksCategory();
+				tasksCategory1.setId(resultSet.getInt("id"));
+				tasksCategory1.setName(resultSet.getString("name"));
+				tasksCategory1.setParent(new TasksCategory());
+				tasksCategory1.getParent().setId(resultSet.getInt("parent_id"));
+				tasksCategory.add(tasksCategory1);
+			}
+			return tasksCategory;
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
