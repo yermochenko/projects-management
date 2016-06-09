@@ -14,7 +14,7 @@ import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 
 @WebServlet("/contacts-type/save.html")
-public class ContactsTypeSaveServlet extends HttpServlet {
+public class 	ContactsTypeSaveServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = null;
