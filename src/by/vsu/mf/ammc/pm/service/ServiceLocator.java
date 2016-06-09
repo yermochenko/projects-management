@@ -9,16 +9,12 @@ import by.vsu.mf.ammc.pm.dao.mysql.project.ProjectDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TeamDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
+import by.vsu.mf.ammc.pm.dao.mysql.user.UsersGroupDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
+import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
-import by.vsu.mf.ammc.pm.service.main.user.ContactsTypeServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.ProjectServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.TeamServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.UserServiceImpl;
-import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
-import by.vsu.mf.ammc.pm.service.user.ProjectService;
-import by.vsu.mf.ammc.pm.service.user.TeamService;
-import by.vsu.mf.ammc.pm.service.user.UserService;
+import by.vsu.mf.ammc.pm.service.main.user.*;
+import by.vsu.mf.ammc.pm.service.user.*;
 
 public class ServiceLocator {
 	private Map<Class<?>, Object> services = new ConcurrentHashMap<>();
@@ -42,6 +38,9 @@ public class ServiceLocator {
 			ProjectDaoImpl projectDao = new ProjectDaoImpl();
 			projectDao.setConnection(connection);
 
+			UsersGroupDaoImpl usersGroupDao = new UsersGroupDaoImpl();
+			usersGroupDao.setConnection(connection);
+
 			/* создание объектов слоя сервисов */
 			ContactsTypeServiceImpl contactsTypeService = new ContactsTypeServiceImpl();
 			contactsTypeService.setDao(contactsTypeDao);
@@ -57,12 +56,16 @@ public class ServiceLocator {
 			UserServiceImpl userService = new UserServiceImpl();
 			userService.setDao(userDao);
 
+			UsersGroupServiceImpl usersGroupService = new UsersGroupServiceImpl();
+			usersGroupService.setDao(usersGroupDao);
+
 
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
 			services.put(TeamService.class, teamService);
 			services.put(ProjectService.class, projectService);
 			services.put(UserService.class, userService);
+			services.put(UsersGroupService.class, usersGroupService);
 		} catch(SQLException e) {
 			throw new ServiceException(e);
 		}
