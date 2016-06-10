@@ -16,7 +16,7 @@ INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (14, 'Subgroup_2 (4
 INSERT INTO `users_group` (`id`, `name`, `parent_id`) VALUES (15, 'Applied Mathematics and Mechanics', 2);
 
 --Записи в таблицe "user"
-INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (1, 'Admin', 'admin', 'Sergey', 'Aleksandrovich', 'Ermochenko', 1, 15);
+INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (1, 'Admin', 'admin', 'Сергей', 'Александрович', 'Ермоченко', 1, 15);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (2, 'Tima', 't123', 'Timofei', 'Mikhailovich', 'Mironenko', 0, 13);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (3, 'Borya', 'mfgood', 'Boris', 'Andreevich', 'Petrenko', 0, 13);
 INSERT INTO `user` (`id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id`) VALUES (4, 'Max', 'mrtgds', 'Maxim', 'Sergeevich', 'Sheidin', 0, 14);

@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by Timofei on 08.06.2016.
  */
-@WebServlet("/team/save.html")
+@WebServlet("/manager/team/save.html")
 public class TeamSaveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,6 +47,6 @@ public class TeamSaveServlet extends HttpServlet {
                 try { locator.close(); } catch(NullPointerException | ServiceException e) {}
             }
         }
-        resp.sendRedirect(req.getContextPath() + "/team/list.html");
+        resp.sendRedirect(req.getContextPath() + "/manager/team/list.html");
     }
 }

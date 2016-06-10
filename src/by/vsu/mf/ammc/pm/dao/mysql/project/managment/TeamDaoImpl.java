@@ -113,7 +113,7 @@ public class TeamDaoImpl extends BaseDao implements TeamDao {
 			Team team = null;
 			Project project = new Project();
 			project.setId(projectId);
-			if(resultSet.next()) {
+			while(resultSet.next()) {
 				team = new Team();
 				team.setId(resultSet.getInt("id"));
 				team.setProject(project);
