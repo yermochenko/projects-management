@@ -1,4 +1,4 @@
-package by.vsu.mf.ammc.pm.servlet.user;
+package by.vsu.mf.ammc.pm.servlet.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 
-@WebServlet("/contacts-type/list.html")
+@WebServlet("/admin/contacts-type/list.html")
 public class ContactsTypeListServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class ContactsTypeListServlet extends HttpServlet {
 			ContactsTypeService service = locator.getService(ContactsTypeService.class);
 			List<ContactsType> types = service.findAll();
 			req.setAttribute("types", types);
-			req.getRequestDispatcher("/WEB-INF/jsp/contacts-type/list.jsp").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/jsp/admin/contacts-type/list.jsp").forward(req, resp);
 		} catch(ServiceException e) {
 			throw new ServletException(e);
 		} finally {

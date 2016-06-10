@@ -1,4 +1,4 @@
-package by.vsu.mf.ammc.pm.servlet.user;
+package by.vsu.mf.ammc.pm.servlet.admin;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 
-@WebServlet("/contacts-type/edit.html")
+@WebServlet("/admin/contacts-type/edit.html")
 public class ContactsTypeEditServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +34,6 @@ public class ContactsTypeEditServlet extends HttpServlet {
 				try { locator.close(); } catch(NullPointerException | ServiceException e) {}
 			}
 		}
-		req.getRequestDispatcher("/WEB-INF/jsp/contacts-type/edit.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/admin/contacts-type/edit.jsp").forward(req, resp);
 	}
 }

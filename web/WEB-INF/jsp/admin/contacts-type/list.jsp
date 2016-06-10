@@ -17,13 +17,13 @@
 				<c:forEach var="type" items="${types}">
 					<TR>
 						<TD class="insignificant">${type.id}</TD>
-						<c:url var="editUrl" value="/contacts-type/edit.html"><c:param name="id" value="${type.id}"/></c:url>
+						<c:url var="editUrl" value="/admin/contacts-type/edit.html"><c:param name="id" value="${type.id}"/></c:url>
 						<TD><A href="${editUrl}">${type.name}</A></TD>
 						<TD><CODE>${type.regexp}</CODE></TD>
 					</TR>
 				</c:forEach>
 			</TABLE>
-			<c:url var="editUrl" value="/contacts-type/edit.html"/>
+			<c:url var="editUrl" value="/admin/contacts-type/edit.html"/>
 			<FORM action="${editUrl}">
 				<BUTTON type="submit">Добавить тип контактов</BUTTON>
 			</FORM>

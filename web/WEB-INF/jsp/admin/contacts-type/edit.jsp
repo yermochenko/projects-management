@@ -6,7 +6,7 @@
 </c:if>
 <u:html title="Редактирование типа контактов">
 	<c:url var="mainUrl" value="/index.html"/>
-	<c:url var="projectListUrl" value="/contacts-type/list.html"/>
+	<c:url var="projectListUrl" value="/admin/contacts-type/list.html"/>
 	<DIV id="breadcrumbs"><A href="${mainUrl}">Главная</A> :: <A href="${projectListUrl}">Типы контактов</A> :: Редактирование типа контактов</DIV>
 	<H2>Редактирование типа контактов</H2>
 	<DIV id="page">
@@ -19,7 +19,7 @@
 					<H3>Новый тип контактов</H3>
 				</c:otherwise>
 			</c:choose>
-			<c:url var="contactsTypesSaveUrl" value="/contacts-type/save.html"/>
+			<c:url var="contactsTypesSaveUrl" value="/admin/contacts-type/save.html"/>
 			<FORM action="${contactsTypesSaveUrl}" method="post">
 				<c:if test="${not empty type.id}">
 					<INPUT type="hidden" name="id" value="${type.id}">
@@ -32,7 +32,7 @@
 				<BUTTON type="reset">Очистить форму</BUTTON>
 			</FORM>
 			<c:if test="${not empty type.id}">
-				<c:url var="contactsTypesDeleteUrl" value="/contacts-type/delete.html"/>
+				<c:url var="contactsTypesDeleteUrl" value="/admin/contacts-type/delete.html"/>
 				<FORM action="${contactsTypesDeleteUrl}" method="post">
 					<INPUT type="hidden" name="id" value="${type.id}">
 					<BUTTON type="submit">Удалить</BUTTON>

@@ -1,4 +1,4 @@
-package by.vsu.mf.ammc.pm.servlet.user;
+package by.vsu.mf.ammc.pm.servlet.admin;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 
-@WebServlet("/contacts-type/delete.html")
+@WebServlet("/admin/contacts-type/delete.html")
 public class ContactsTypeDeleteServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +32,6 @@ public class ContactsTypeDeleteServlet extends HttpServlet {
 				try { locator.close(); } catch(NullPointerException | ServiceException e) {}
 			}
 		}
-		resp.sendRedirect(req.getContextPath() + "/contacts-type/list.html");
+		resp.sendRedirect(req.getContextPath() + "/admin/contacts-type/list.html");
 	}
 }

@@ -20,7 +20,7 @@ public class MainServlet extends HttpServlet {
 	static {
 		menu = new HashMap<>();
 		List<MainMenuItem> adminMenu = new ArrayList<>();
-		adminMenu.add(new MainMenuItem("/contacts-type/list.html", "Типы контактов"));
+		adminMenu.add(new MainMenuItem("/admin/contacts-type/list.html", "Типы контактов"));
 		menu.put("admin", adminMenu);
 	}
 
