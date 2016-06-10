@@ -33,7 +33,7 @@ public class UserEditServlet extends HttpServlet {
                 locator = new ServiceLocator();
                 UserService service = locator.getService(UserService.class);
                 User type = service.findById(id);
-                req.setAttribute("type", type);
+                req.setAttribute("user", type);
             } catch (ServiceException e) {
                 throw new ServletException(e);
             } finally {

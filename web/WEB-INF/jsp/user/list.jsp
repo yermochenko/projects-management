@@ -31,8 +31,8 @@
                     <TH>Отчество</TH>
                 </TR>
                 <c:forEach var="user" items="${users}">
-                    <c:url var="userUrl" value="/user/list.html">
-                        <c:param name="user-id" value="${user.id}"/>
+                    <c:url var="userUrl" value="/user/edit.html">
+                        <c:param name="id" value="${user.id}"/>
                     </c:url>
                     <TR>
                         <TD class="insignificant">${user.id}</TD>
@@ -43,7 +43,7 @@
                     </TR>
                 </c:forEach>
             </TABLE>
-            <c:url var="userSaveUrl" value="/user/save.html"/>
+            <c:url var="userSaveUrl" value="/user/edit.html"/>
             <FORM action="${userSaveUrl}">
                 <BUTTON type="submit">Добавить пользователя</BUTTON>
             </FORM>
@@ -51,7 +51,7 @@
         <DIV class="side-column">
             <H3>Группы пользователей</H3>
             <UL>
-                <c:forEach var="usersGroup" items="${usersGroups}">
+                <c:forEach var="usersGroup" items="${groups}">
                     <c:url var="usersGroupUrl" value="/users_group/list.html">
                         <c:param name="usersGroup-id" value="${usersGroup.id}"/>
                     </c:url>

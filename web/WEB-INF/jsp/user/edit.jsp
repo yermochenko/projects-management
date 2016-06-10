@@ -8,8 +8,8 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="u" %>
-<c:if test="${empty type}">
-    <jsp:useBean id="type" class="by.vsu.mf.ammc.pm.domain.user.User"/>
+<c:if test="${empty user}">
+    <jsp:useBean id="user" class="by.vsu.mf.ammc.pm.domain.user.User"/>
 </c:if>
 <u:html title="Редактирование пользователя">
     <c:url var="mainUrl" value="/index.html"/>
@@ -21,21 +21,24 @@
     <H2>Редактирование пользователя</H2>
     <DIV id="page">
         <DIV class="single-column">
-            <H3>Редактирование пользователя Петрова&nbsp;П.&nbsp;П.</H3>
+            <H3>Редактирование пользователя ${user.lastName} ${user.firstName} ${user.middleName}</H3>
             <c:url var="userSaveUrl" value="/user/save.html"/>
             <FORM action="${userSaveUrl}" method="post">
+                <c:if test="${not empty user.id}">
+                    <INPUT type="hidden" name="id" value="${type.id}">
+                </c:if>
                 <LABEL for="name">Логин:</LABEL>
-                <INPUT type="text" id="name" name="name" value="${type.name}">
+                <INPUT type="text" id="name" name="name" value="${user.name}">
                 <LABEL for="password">Пароль:</LABEL>
-                <INPUT type="password" id="password" name="password" value="${type.password}">
+                <INPUT type="password" id="password" name="password" value="${user.password}">
                 <LABEL for="first_name">Имя пользователя:</LABEL>
-                <INPUT type="text" id="first_name" name="first_name" value="${type.firstName}">
+                <INPUT type="text" id="first_name" name="first_name" value="${user.firstName}">
                 <LABEL for="last_name">Фамилия</LABEL>
-                <INPUT type="text" id="last_name" name="last_name" value="${type.lastName}">
+                <INPUT type="text" id="last_name" name="last_name" value="${user.lastName}">
                 <LABEL for="middle_name">Отчество:</LABEL>
-                <INPUT type="text" id="middle_name" name="middle_name" value="${type.middleName}">
+                <INPUT type="text" id="middle_name" name="middle_name" value="${user.middleName}">
                 <LABEL for="group">Группа:</LABEL>
-                <INPUT type="text" id="group" name="group" value="${type.group}">
+                <INPUT type="text" id="group" name="group" value="${user.group}">
                 <BUTTON type="submit">Сохранить</BUTTON>
                 <BUTTON type="reset">Очистить форму</BUTTON>
             </FORM>

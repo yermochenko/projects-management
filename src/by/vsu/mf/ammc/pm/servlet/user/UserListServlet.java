@@ -2,10 +2,12 @@ package by.vsu.mf.ammc.pm.servlet.user;
 
 import by.vsu.mf.ammc.pm.domain.user.ContactsType;
 import by.vsu.mf.ammc.pm.domain.user.User;
+import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 import by.vsu.mf.ammc.pm.service.user.UserService;
+import by.vsu.mf.ammc.pm.service.user.UsersGroupService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +29,13 @@ public class UserListServlet extends HttpServlet {
             locator = new ServiceLocator();
             UserService service = locator.getService(UserService.class);
             List<User> types = service.findAll();
-            req.setAttribute("types", types);
+            req.setAttribute("users", types);
+
+            UsersGroupService usersGroupService = locator.getService(UsersGroupService.class);
+            List<UsersGroup> groups  = usersGroupService.findAll();
+            req.setAttribute("groups", groups);
             req.getRequestDispatcher("/WEB-INF/jsp/user/list.jsp").forward(req, resp);
+
         } catch(ServiceException e) {
             throw new ServletException(e);
         } finally {
