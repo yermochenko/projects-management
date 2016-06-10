@@ -11,7 +11,6 @@ import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UsersGroupDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
-import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.main.user.*;
 import by.vsu.mf.ammc.pm.service.user.*;

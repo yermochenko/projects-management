@@ -1,7 +1,6 @@
 package by.vsu.mf.ammc.pm.service.user;
 
 import by.vsu.mf.ammc.pm.domain.project.Project;
-import by.vsu.mf.ammc.pm.domain.project.management.Team;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 
 import java.util.List;

@@ -2,8 +2,6 @@ package by.vsu.mf.ammc.pm.servlet.user;
 
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
-import by.vsu.mf.ammc.pm.service.user.TeamService;
 import by.vsu.mf.ammc.pm.service.user.UserService;
 
 import javax.servlet.ServletException;

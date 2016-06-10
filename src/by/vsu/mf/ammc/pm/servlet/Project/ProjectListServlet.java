@@ -1,10 +1,8 @@
 package by.vsu.mf.ammc.pm.servlet.Project;
 
 import by.vsu.mf.ammc.pm.domain.project.Project;
-import by.vsu.mf.ammc.pm.domain.user.ContactsType;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 import by.vsu.mf.ammc.pm.service.user.ProjectService;
 
 import javax.servlet.ServletException;

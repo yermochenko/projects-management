@@ -2,7 +2,6 @@ package by.vsu.mf.ammc.pm.service.main.user;
 
 import by.vsu.mf.ammc.pm.dao.user.UserDao;
 import by.vsu.mf.ammc.pm.domain.user.User;
-import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.user.UserService;

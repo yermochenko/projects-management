@@ -1,17 +1,10 @@
 package by.vsu.mf.ammc.pm.servlet.user;
 
-import by.vsu.mf.ammc.pm.domain.project.management.Team;
-import by.vsu.mf.ammc.pm.domain.user.ContactsType;
 import by.vsu.mf.ammc.pm.domain.user.User;
-import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
-import by.vsu.mf.ammc.pm.service.user.TeamService;
 import by.vsu.mf.ammc.pm.service.user.UserService;
 
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

@@ -1,11 +1,9 @@
 package by.vsu.mf.ammc.pm.servlet.users_group;
 
 
-import by.vsu.mf.ammc.pm.domain.project.management.Team;
 import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.TeamService;
 import by.vsu.mf.ammc.pm.service.user.UsersGroupService;
 
 import javax.servlet.ServletException;
