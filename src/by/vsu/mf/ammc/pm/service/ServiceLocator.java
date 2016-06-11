@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import by.vsu.mf.ammc.pm.dao.mysql.project.ProjectDaoImpl;
+import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TasksCategoryDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TeamDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
@@ -15,7 +16,8 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.main.user.*;
 import by.vsu.mf.ammc.pm.service.user.*;
 
-public class ServiceLocator {
+public class
+ServiceLocator {
 	private Map<Class<?>, Object> services = new ConcurrentHashMap<>();
 
 	private Connection connection;
@@ -40,6 +42,9 @@ public class ServiceLocator {
 			UsersGroupDaoImpl usersGroupDao = new UsersGroupDaoImpl();
 			usersGroupDao.setConnection(connection);
 
+			TasksCategoryDaoImpl tasksCategoryDao = new TasksCategoryDaoImpl();
+			tasksCategoryDao.setConnection(connection);
+
 			/* создание объектов слоя сервисов */
 			ContactsTypeServiceImpl contactsTypeService = new ContactsTypeServiceImpl();
 			contactsTypeService.setDao(contactsTypeDao);
@@ -58,6 +63,8 @@ public class ServiceLocator {
 			UsersGroupServiceImpl usersGroupService = new UsersGroupServiceImpl();
 			usersGroupService.setDao(usersGroupDao);
 
+			TasksCategoryServiceImpl tasksCategoryService = new TasksCategoryServiceImpl();
+			tasksCategoryService.setDao(tasksCategoryDao);
 
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
@@ -65,6 +72,7 @@ public class ServiceLocator {
 			services.put(ProjectService.class, projectService);
 			services.put(UserService.class, userService);
 			services.put(UsersGroupService.class, usersGroupService);
+			services.put(TasksCategoryService.class, tasksCategoryService);
 		} catch(SQLException e) {
 			throw new ServiceException(e);
 		}

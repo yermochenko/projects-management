@@ -15,14 +15,18 @@ import by.vsu.mf.ammc.pm.exception.DaoException;
 public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 	@Override
 	public Integer create(TasksCategory category) throws DaoException {
-		String sqlScript = "INSERT INTO `task_category` (`name`, `parent_id`) VALUE (?, ?)";
+		String sqlScript = "INSERT INTO `tasks_category` (`name`, `parent_id`) VALUE (?, ?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.prepareStatement(sqlScript, PreparedStatement.RETURN_GENERATED_KEYS);
 			statement.setString(1, category.getName());
-			statement.setInt(2, category.getParent().getId());
+            if (category.getParent() != null) {
+                statement.setInt(2, category.getParent().getId());
+            } else {
+                statement.setNull(2, Types.INTEGER);
+            }
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
@@ -37,7 +41,7 @@ public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 
 	@Override
 	public TasksCategory read(Integer id) throws DaoException {
-		String sqlScript = "SELECT `name`, `parent_id` FROM `task_category` WHERE `id` = ?";
+		String sqlScript = "SELECT `name`, `parent_id` FROM `tasks_category` WHERE `id` = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -64,24 +68,27 @@ public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 
 	@Override
 	public List<TasksCategory> read() throws DaoException {
-		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `task_category`";
+		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `tasks_category`";
 		Connection connection = getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sqlScript);
-			List<TasksCategory> tasksCategory = new ArrayList<>();
-			TasksCategory tasksCategory1 = null;
+			List<TasksCategory> tasksCategories = new ArrayList<>();
+			TasksCategory tasksCategory = null;
 			while(resultSet.next()) {
-				tasksCategory1 = new TasksCategory();
-				tasksCategory1.setId(resultSet.getInt("id"));
-				tasksCategory1.setName(resultSet.getString("name"));
-				tasksCategory1.setParent(new TasksCategory());
-				tasksCategory1.getParent().setId(resultSet.getInt("parent_id"));
-				tasksCategory.add(tasksCategory1);
+				tasksCategory = new TasksCategory();
+				tasksCategory.setId(resultSet.getInt("id"));
+				tasksCategory.setName(resultSet.getString("name"));
+				Integer parentId = resultSet.getInt("parent_id");
+				if(!resultSet.wasNull()) {
+					tasksCategory.setParent(new TasksCategory());
+					tasksCategory.getParent().setId(parentId);
+				}
+				tasksCategories.add(tasksCategory);
 			}
-			return tasksCategory;
+			return tasksCategories;
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
@@ -92,13 +99,17 @@ public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 
 	@Override
 	public void update(TasksCategory category) throws DaoException {
-		String sqlScript = "UPDATE `task_category` SET `name` = ?, `parent_id` = ? WHERE `id` = ?";
+		String sqlScript = "UPDATE `tasks_category` SET `name` = ?, `parent_id` = ? WHERE `id` = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(sqlScript);
 			statement.setString(1, category.getName());
-			statement.setInt(2, category.getParent().getId());
+            if (category.getParent() != null) {
+                statement.setInt(2, category.getParent().getId());
+            } else {
+                statement.setNull(2, Types.INTEGER);
+            }
 			statement.setInt(3, category.getId());
 			statement.executeUpdate();
 		} catch(SQLException e) {
@@ -110,7 +121,7 @@ public class TasksCategoryDaoImpl extends BaseDao implements TasksCategoryDao {
 
 	@Override
 	public void delete(Integer id) throws DaoException {
-		String sqlScript = "DELETE FROM `task_category` WHERE `id` = ?";
+		String sqlScript = "DELETE FROM `tasks_category` WHERE `id` = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		try {
