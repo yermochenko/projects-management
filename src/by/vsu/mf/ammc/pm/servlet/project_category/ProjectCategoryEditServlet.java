@@ -29,7 +29,7 @@ public class ProjectCategoryEditServlet extends HttpServlet {
                 locator = new ServiceLocator();
                 ProjectsCategoryService service = locator.getService(ProjectsCategoryService.class);
                 ProjectsCategory type = service.findById(id);
-                req.setAttribute("type", type);
+                req.setAttribute("category", type);
 
             } catch(ServiceException e) {
                 throw new ServletException(e);
@@ -37,6 +37,6 @@ public class ProjectCategoryEditServlet extends HttpServlet {
                 try { locator.close(); } catch(NullPointerException | ServiceException e) {}
             }
         }
-        req.getRequestDispatcher("/WEB-INF/jsp/project/edit.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/project-category/edit.jsp").forward(req, resp);
     }
 }

@@ -9,7 +9,7 @@
 				<c:param name="id" value="${category.id}"/>
 			</c:url>
 			<LI><A href="${editUrl}">${group.name}</A>
-				<u:user-group groups="${category.children}"/>
+				<u:project-category groups="${category.children}"/>
 			</LI>
 		</c:forEach>
 	</UL>

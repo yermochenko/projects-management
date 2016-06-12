@@ -33,6 +33,6 @@ public class ProjectCategoryDeleteServlet extends HttpServlet{
                 try { locator.close(); } catch(NullPointerException | ServiceException e) {}
             }
         }
-        resp.sendRedirect(req.getContextPath() + "/project/list.html");
+        resp.sendRedirect(req.getContextPath() + "/project-category/list.html");
     }
 }

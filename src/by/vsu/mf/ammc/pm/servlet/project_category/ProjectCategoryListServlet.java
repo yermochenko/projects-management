@@ -28,13 +28,13 @@ public class ProjectCategoryListServlet extends HttpServlet{
                 locator = new ServiceLocator();
                 ProjectsCategoryService service = locator.getService(ProjectsCategoryService.class);
                 List<ProjectsCategory> projectsCategory = service.findAll(id);
-                req.setAttribute("projects_category", projectsCategory);
+                req.setAttribute("category", projectsCategory);
             } catch(ServiceException e) {
                 throw new ServletException(e);
             } finally {
                 try { locator.close(); } catch(NullPointerException | ServiceException e) {}
             }
         }
-        req.getRequestDispatcher("/WEB-INF/jsp/project/list.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/project-category/list.jsp").forward(req, resp);
     }
 }
