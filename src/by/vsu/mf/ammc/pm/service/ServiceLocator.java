@@ -6,12 +6,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import by.vsu.mf.ammc.pm.dao.mysql.project.ProjectDaoImpl;
+import by.vsu.mf.ammc.pm.dao.mysql.project.ProjectsCategoryDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TasksCategoryDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.project.managment.TeamDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UsersGroupDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
+import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.main.user.*;
 import by.vsu.mf.ammc.pm.service.user.*;
@@ -45,6 +47,9 @@ ServiceLocator {
 			TasksCategoryDaoImpl tasksCategoryDao = new TasksCategoryDaoImpl();
 			tasksCategoryDao.setConnection(connection);
 
+			ProjectsCategoryDaoImpl projectsCategoryDao = new ProjectsCategoryDaoImpl();
+			projectsCategoryDao.setConnection(connection);
+
 			/* создание объектов слоя сервисов */
 			ContactsTypeServiceImpl contactsTypeService = new ContactsTypeServiceImpl();
 			contactsTypeService.setDao(contactsTypeDao);
@@ -66,6 +71,9 @@ ServiceLocator {
 			TasksCategoryServiceImpl tasksCategoryService = new TasksCategoryServiceImpl();
 			tasksCategoryService.setDao(tasksCategoryDao);
 
+			ProjectCategoryServiceImpl projectsCategoryService = new ProjectCategoryServiceImpl();
+			projectsCategoryService.setDao(projectsCategoryDao);
+
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
 			services.put(TeamService.class, teamService);
@@ -73,6 +81,7 @@ ServiceLocator {
 			services.put(UserService.class, userService);
 			services.put(UsersGroupService.class, usersGroupService);
 			services.put(TasksCategoryService.class, tasksCategoryService);
+			services.put(ProjectsCategoryService.class, projectsCategoryService)
 		} catch(SQLException e) {
 			throw new ServiceException(e);
 		}

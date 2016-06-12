@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.vsu.mf.ammc.pm.dao.mysql.BaseDao;
 import by.vsu.mf.ammc.pm.dao.project.ProjectsCategoryDao;
@@ -64,6 +66,36 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 	}
 
 	@Override
+	public List<ProjectsCategory> read() throws DaoException {
+		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `project_category`";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sqlScript);
+			resultSet = statement.executeQuery();
+			ProjectsCategory projects_category = null;
+			List<ProjectsCategory> projects_Category = new ArrayList<>();
+
+			while(resultSet.next()) {
+				ProjectsCategory category = new ProjectsCategory();
+				projects_category = new ProjectsCategory();
+				projects_category.setId(resultSet.getInt("id"));
+				projects_category.setName(resultSet.getString("name"));
+				projects_category.setParent(new ProjectsCategory());
+				projects_category.getParent().setId(resultSet.getInt("parent_id"));
+				projects_Category.add(projects_category);
+			}
+			return projects_Category;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
+			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+		}
+	}
+
+	@Override
 	public void update(ProjectsCategory category) throws DaoException {
 		String sqlScript = "UPDATE `project_category` SET `name` = ?, `parent_id` = ? WHERE `id` = ?";
 		Connection connection = getConnection();
@@ -96,4 +128,7 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 			try { statement.close(); } catch(NullPointerException | SQLException e) {}
 		}
 	}
+
+
 }
+
