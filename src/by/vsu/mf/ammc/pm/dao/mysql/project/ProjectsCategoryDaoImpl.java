@@ -78,7 +78,6 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 			List<ProjectsCategory> projects_Category = new ArrayList<>();
 
 			while(resultSet.next()) {
-				ProjectsCategory category = new ProjectsCategory();
 				projects_category = new ProjectsCategory();
 				projects_category.setId(resultSet.getInt("id"));
 				projects_category.setName(resultSet.getString("name"));
