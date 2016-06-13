@@ -13,13 +13,23 @@ import by.vsu.mf.ammc.pm.dao.mysql.user.ContactsTypeDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UsersGroupDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
-import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
-import by.vsu.mf.ammc.pm.service.main.user.*;
-import by.vsu.mf.ammc.pm.service.user.*;
+import by.vsu.mf.ammc.pm.service.main.user.ContactsTypeServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.ProjectCategoryServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.ProjectServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.TasksCategoryServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.TeamServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.UserServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.user.UsersGroupServiceImpl;
+import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
+import by.vsu.mf.ammc.pm.service.user.ProjectService;
+import by.vsu.mf.ammc.pm.service.user.ProjectsCategoryService;
+import by.vsu.mf.ammc.pm.service.user.TasksCategoryService;
+import by.vsu.mf.ammc.pm.service.user.TeamService;
+import by.vsu.mf.ammc.pm.service.user.UserService;
+import by.vsu.mf.ammc.pm.service.user.UsersGroupService;
 
-public class
-ServiceLocator {
+public class ServiceLocator {
 	private Map<Class<?>, Object> services = new ConcurrentHashMap<>();
 
 	private Connection connection;
@@ -63,7 +73,8 @@ ServiceLocator {
 			projectService.setUserDao(userDao);
 
 			UserServiceImpl userService = new UserServiceImpl();
-			userService.setDao(userDao);
+			userService.setUserDao(userDao);
+			userService.setUsersGroupDao(usersGroupDao);
 
 			UsersGroupServiceImpl usersGroupService = new UsersGroupServiceImpl();
 			usersGroupService.setDao(usersGroupDao);
@@ -81,7 +92,7 @@ ServiceLocator {
 			services.put(UserService.class, userService);
 			services.put(UsersGroupService.class, usersGroupService);
 			services.put(TasksCategoryService.class, tasksCategoryService);
-			services.put(ProjectsCategoryService.class, projectsCategoryService)
+			services.put(ProjectsCategoryService.class, projectsCategoryService);
 		} catch(SQLException e) {
 			throw new ServiceException(e);
 		}

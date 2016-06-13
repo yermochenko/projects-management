@@ -22,7 +22,7 @@ public class UsersGroupDaoImpl extends BaseDao implements UsersGroupDao {
 		try {
 			statement = connection.prepareStatement(sqlScript, PreparedStatement.RETURN_GENERATED_KEYS);
 			statement.setString(1, usersGroup.getName());
-			if(usersGroup.getParent() != null) {
+			if(usersGroup.getParent() != null && usersGroup.getParent().getId() != null) {
 				statement.setInt(2, usersGroup.getParent().getId());
 			} else {
 				statement.setNull(2, Types.INTEGER);
@@ -54,8 +54,11 @@ public class UsersGroupDaoImpl extends BaseDao implements UsersGroupDao {
 				usersGroup = new UsersGroup();
 				usersGroup.setId(id);
 				usersGroup.setName(resultSet.getString("name"));
-				usersGroup.setParent(new UsersGroup());
-				usersGroup.getParent().setId(resultSet.getInt("parent_id"));
+				Integer parentId = resultSet.getInt("parent_id");
+				if(!resultSet.wasNull()) {
+					usersGroup.setParent(new UsersGroup());
+					usersGroup.getParent().setId(parentId);
+				}
 			}
 			return usersGroup;
 		} catch(SQLException e) {
@@ -74,7 +77,7 @@ public class UsersGroupDaoImpl extends BaseDao implements UsersGroupDao {
 		try {
 			statement = connection.prepareStatement(sqlScript);
 			statement.setString(1, usersGroup.getName());
-			if(usersGroup.getParent() != null) {
+			if(usersGroup.getParent() != null && usersGroup.getParent().getId() != null) {
 				statement.setInt(2, usersGroup.getParent().getId());
 			} else {
 				statement.setNull(2, Types.INTEGER);

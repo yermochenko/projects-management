@@ -7,5 +7,7 @@ import by.vsu.mf.ammc.pm.exception.DaoException;
 import java.util.List;
 
 public interface UserDao extends Dao<Integer, User> {
-    List<User> read() throws DaoException;
+	List<User> read() throws DaoException;
+
+	List<User> readByGroup(Integer groupId) throws DaoException;
 }

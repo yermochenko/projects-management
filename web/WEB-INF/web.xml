@@ -13,13 +13,13 @@
 	<context-param><param-name>jdbc-user</param-name><param-value>pm_user</param-value></context-param>
 	<context-param><param-name>jdbc-password</param-name><param-value>pm_password</param-value></context-param>
 
-	<!--error-page>
+	<error-page>
 		<exception-type>javax.servlet.ServletException</exception-type>
 		<location>/WEB-INF/jsp/error.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/jsp/error.jsp</location>
-	</error-page-->
+	</error-page>
 
 </web-app>

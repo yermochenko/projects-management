@@ -36,8 +36,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
-			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+			try {
+				resultSet.close();
+			} catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
 		}
 	}
 
@@ -68,8 +72,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
-			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+			try {
+				resultSet.close();
+			} catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
 		}
 	}
 
@@ -92,7 +100,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
 		}
 	}
 
@@ -108,40 +118,85 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try { statement.close(); } catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
 		}
 	}
 
-    @Override
-    public List<User> read() throws DaoException {
-        String sqlScript = "SELECT `id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id` FROM `user`";
-        Connection connection = getConnection();
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sqlScript);
-            List<User> users  = new ArrayList<>();
-            User user = null;
-            while(resultSet.next()) {
-                user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setName(resultSet.getString("name"));
-                user.setPassword(resultSet.getString("password"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setMiddleName(resultSet.getString("middle_name"));
-                user.setLastName(resultSet.getString("last_name"));
-                user.setAdmin(resultSet.getBoolean("is_admin"));
-                user.setGroup(new UsersGroup());
-                user.getGroup().setId(resultSet.getInt("group_id"));
-                users.add(user);
-            }
-            return users;
-        } catch(SQLException e) {
-            throw new DaoException(e);
-        } finally {
-            try { resultSet.close(); } catch(NullPointerException | SQLException e) {}
-            try { statement.close(); } catch(NullPointerException | SQLException e) {}
-        }
+	@Override
+	public List<User> readByGroup(Integer groupId) throws DaoException {
+		String sqlScript = "SELECT `id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin` FROM `user` WHERE `group_id` = ?";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sqlScript);
+			statement.setInt(1, groupId);
+			resultSet = statement.executeQuery();
+			List<User> users = new ArrayList<>();
+			User user = null;
+			UsersGroup group = new UsersGroup();
+			group.setId(groupId);
+			while(resultSet.next()) {
+				user = new User();
+				user.setId(resultSet.getInt("id"));
+				user.setName(resultSet.getString("name"));
+				user.setPassword(resultSet.getString("password"));
+				user.setFirstName(resultSet.getString("first_name"));
+				user.setMiddleName(resultSet.getString("middle_name"));
+				user.setLastName(resultSet.getString("last_name"));
+				user.setAdmin(resultSet.getBoolean("is_admin"));
+				user.setGroup(group);
+				users.add(user);
+			}
+			return users;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try {
+				resultSet.close();
+			} catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
+		}
+	}
+
+	@Override
+	public List<User> read() throws DaoException {
+		String sqlScript = "SELECT `id`, `name`, `password`, `first_name`, `middle_name`, `last_name`, `is_admin`, `group_id` FROM `user`";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(sqlScript);
+			resultSet = statement.executeQuery();
+			List<User> users = new ArrayList<>();
+			User user = null;
+			while(resultSet.next()) {
+				user = new User();
+				user.setId(resultSet.getInt("id"));
+				user.setName(resultSet.getString("name"));
+				user.setPassword(resultSet.getString("password"));
+				user.setFirstName(resultSet.getString("first_name"));
+				user.setMiddleName(resultSet.getString("middle_name"));
+				user.setLastName(resultSet.getString("last_name"));
+				user.setAdmin(resultSet.getBoolean("is_admin"));
+				user.setGroup(new UsersGroup());
+				user.getGroup().setId(resultSet.getInt("group_id"));
+				users.add(user);
+			}
+			return users;
+		} catch(SQLException e) {
+			throw new DaoException(e);
+		} finally {
+			try {
+				resultSet.close();
+			} catch(NullPointerException | SQLException e) {}
+			try {
+				statement.close();
+			} catch(NullPointerException | SQLException e) {}
+		}
 	}
 }
