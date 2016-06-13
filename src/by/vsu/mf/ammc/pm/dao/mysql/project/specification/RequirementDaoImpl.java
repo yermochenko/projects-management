@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class RequirementDaoImpl extends BaseDao implements RequirementDao {
     @Override
     public Integer create(Requirement object) throws DaoException {
-        String sqlScript = "INSERT INTO `reqirement` ( `name`, `description`, `importance`, `change_probability`, `use_case_id`, `module_id`) VALUE (?, ?, ?, ?, ?, ?)";
+        String sqlScript = "INSERT INTO `requirement` ( `name`, `description`, `importance`, `change_probability`, `use_case_id`, `module_id`) VALUE (?, ?, ?, ?, ?, ?)";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         ResultSet r = null;
@@ -76,7 +76,7 @@ public class RequirementDaoImpl extends BaseDao implements RequirementDao {
 
     @Override
     public void update(Requirement object) throws DaoException {
-        String sqlScript = "UPDATE `reqirement` SET `user_id` = ?, `name` = ?, `description` = ?, `importance` = ?, `change_probability` = ?, `use_case_id` = ?, `module_id` = ?, WHERE `id` = ?";
+        String sqlScript = "UPDATE `requirement` SET `user_id` = ?, `name` = ?, `description` = ?, `importance` = ?, `change_probability` = ?, `use_case_id` = ?, `module_id` = ?, WHERE `id` = ?";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         try {
@@ -98,7 +98,7 @@ public class RequirementDaoImpl extends BaseDao implements RequirementDao {
 
     @Override
     public void delete(Integer key) throws DaoException {
-        String sqlScript = "DELETE FROM `reqirement` WHERE `id` = ?";
+        String sqlScript = "DELETE FROM `requirement` WHERE `id` = ?";
         Connection connection = getConnection();
         PreparedStatement statement = null;
         try {
