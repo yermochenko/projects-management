@@ -24,7 +24,6 @@
 				</c:when>
 				<c:otherwise>Список пуст</c:otherwise>
 			</c:choose>
-			<%--u:user-group groups="${types}"/--%>
 			<c:url var="editUrl" value="/admin/user/group/edit.html"/>
 			<FORM action="${editUrl}">
 				<BUTTON type="submit">Добавить группу пользователей</BUTTON>
