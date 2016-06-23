@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.vsu.mf.ammc.pm.domain.project.Project;
+import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ProjectService;
+import by.vsu.mf.ammc.pm.service.project.ProjectService;
 
 /**
  * Created by Pasha_R on 08.06.2016.
@@ -31,7 +32,9 @@ public class ProjectListServlet extends HttpServlet {
 			try {
 				locator = new ServiceLocator();
 				ProjectService service = locator.getService(ProjectService.class);
-				List<Project> projects = service.findAll(id);
+				ProjectsCategory category = new ProjectsCategory(); // TODO: заменить на получение объекта из базы
+				category.setId(id);
+				List<Project> projects = service.findByCategory(category);
 				req.setAttribute("projects", projects);
 			} catch (ServiceException e) {
 				throw new ServletException(e);

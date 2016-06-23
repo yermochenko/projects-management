@@ -7,5 +7,5 @@ import by.vsu.mf.ammc.pm.exception.DaoException;
 import java.util.List;
 
 public interface ProjectDao extends Dao<Integer, Project> {
-    List<Project> readByCategoryId(Integer categoryId) throws DaoException;
+	List<Project> readByCategory(Integer categoryId) throws DaoException;
 }

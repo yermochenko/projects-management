@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ProjectService;
+import by.vsu.mf.ammc.pm.service.project.ProjectService;
 
 /**
  * Created by Pasha_R on 08.06.2016.

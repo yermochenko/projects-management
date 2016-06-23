@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +19,18 @@ import by.vsu.mf.ammc.pm.exception.DaoException;
 public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategoryDao {
 	@Override
 	public Integer create(ProjectsCategory category) throws DaoException {
-		String sqlScript = "INSERT INTO `project_category` (`name`, `parent_id`) VALUE (?, ?)";
+		String sqlScript = "INSERT INTO `projects_category` (`name`, `parent_id`) VALUE (?, ?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.prepareStatement(sqlScript, PreparedStatement.RETURN_GENERATED_KEYS);
 			statement.setString(1, category.getName());
-			statement.setInt(2, category.getParent().getId());
+			if(category.getParent() != null && category.getParent().getId() != null) {
+				statement.setInt(2, category.getParent().getId());
+			} else {
+				statement.setNull(2, Types.INTEGER);
+			}
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
@@ -40,7 +45,7 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 
 	@Override
 	public ProjectsCategory read(Integer id) throws DaoException {
-		String sqlScript = "SELECT `name`, `parent_id` FROM `project_category` WHERE `id` = ?";
+		String sqlScript = "SELECT `name`, `parent_id` FROM `projects_category` WHERE `id` = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -53,8 +58,11 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 				category = new ProjectsCategory();
 				category.setId(id);
 				category.setName(resultSet.getString("name"));
-				category.setParent(new ProjectsCategory());
-				category.getParent().setId(resultSet.getInt("parent_id"));
+				Integer parentId = resultSet.getInt("parent_id");
+				if(!resultSet.wasNull()) {
+					category.setParent(new ProjectsCategory());
+					category.getParent().setId(parentId);
+				}
 			}
 			return category;
 		} catch(SQLException e) {
@@ -67,25 +75,28 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 
 	@Override
 	public List<ProjectsCategory> read() throws DaoException {
-		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `project_category`";
+		String sqlScript = "SELECT `id`, `name`, `parent_id` FROM `projects_category`";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.prepareStatement(sqlScript);
 			resultSet = statement.executeQuery();
-			ProjectsCategory projects_category = null;
-			List<ProjectsCategory> projects_Category = new ArrayList<>();
-
+			ProjectsCategory projectsCategory = null;
+			Integer parentId;
+			List<ProjectsCategory> projectsCategories = new ArrayList<>();
 			while(resultSet.next()) {
-				projects_category = new ProjectsCategory();
-				projects_category.setId(resultSet.getInt("id"));
-				projects_category.setName(resultSet.getString("name"));
-				projects_category.setParent(new ProjectsCategory());
-				projects_category.getParent().setId(resultSet.getInt("parent_id"));
-				projects_Category.add(projects_category);
+				projectsCategory = new ProjectsCategory();
+				projectsCategory.setId(resultSet.getInt("id"));
+				projectsCategory.setName(resultSet.getString("name"));
+				parentId = resultSet.getInt("parent_id");
+				if(!resultSet.wasNull()) {
+					projectsCategory.setParent(new ProjectsCategory());
+					projectsCategory.getParent().setId(parentId);
+				}
+				projectsCategories.add(projectsCategory);
 			}
-			return projects_Category;
+			return projectsCategories;
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
@@ -96,13 +107,17 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 
 	@Override
 	public void update(ProjectsCategory category) throws DaoException {
-		String sqlScript = "UPDATE `project_category` SET `name` = ?, `parent_id` = ? WHERE `id` = ?";
+		String sqlScript = "UPDATE `projects_category` SET `name` = ?, `parent_id` = ? WHERE `id` = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement(sqlScript);
 			statement.setString(1, category.getName());
-			statement.setInt(2, category.getParent().getId());
+			if(category.getParent() != null && category.getParent().getId() != null) {
+				statement.setInt(2, category.getParent().getId());
+			} else {
+				statement.setNull(2, Types.INTEGER);
+			}
 			statement.setInt(3, category.getId());
 			statement.executeUpdate();
 		} catch(SQLException e) {
@@ -127,7 +142,4 @@ public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategory
 			try { statement.close(); } catch(NullPointerException | SQLException e) {}
 		}
 	}
-
-
 }
-

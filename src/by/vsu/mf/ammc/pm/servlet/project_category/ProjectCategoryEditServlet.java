@@ -1,15 +1,16 @@
 package by.vsu.mf.ammc.pm.servlet.project_category;
 
-import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
-import by.vsu.mf.ammc.pm.exception.ServiceException;
-import by.vsu.mf.ammc.pm.service.ServiceLocator;
-import by.vsu.mf.ammc.pm.service.user.ProjectsCategoryService;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
+import by.vsu.mf.ammc.pm.exception.ServiceException;
+import by.vsu.mf.ammc.pm.service.ServiceLocator;
+import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 
 /**
  * Created by likan on 10.06.2016.

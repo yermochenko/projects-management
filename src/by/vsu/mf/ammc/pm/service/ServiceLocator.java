@@ -14,16 +14,16 @@ import by.vsu.mf.ammc.pm.dao.mysql.user.UserDaoImpl;
 import by.vsu.mf.ammc.pm.dao.mysql.user.UsersGroupDaoImpl;
 import by.vsu.mf.ammc.pm.datasource.Connector;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
+import by.vsu.mf.ammc.pm.service.main.project.ProjectServiceImpl;
+import by.vsu.mf.ammc.pm.service.main.project.ProjectsCategoryServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.ContactsTypeServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.ProjectCategoryServiceImpl;
-import by.vsu.mf.ammc.pm.service.main.user.ProjectServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.TasksCategoryServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.TeamServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.UserServiceImpl;
 import by.vsu.mf.ammc.pm.service.main.user.UsersGroupServiceImpl;
+import by.vsu.mf.ammc.pm.service.project.ProjectService;
+import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
-import by.vsu.mf.ammc.pm.service.user.ProjectService;
-import by.vsu.mf.ammc.pm.service.user.ProjectsCategoryService;
 import by.vsu.mf.ammc.pm.service.user.TasksCategoryService;
 import by.vsu.mf.ammc.pm.service.user.TeamService;
 import by.vsu.mf.ammc.pm.service.user.UserService;
@@ -69,8 +69,9 @@ public class ServiceLocator {
 			teamService.setUserDao(userDao);
 
 			ProjectServiceImpl projectService = new ProjectServiceImpl();
-			projectService.setDao(projectDao);
+			projectService.setProjectDao(projectDao);
 			projectService.setUserDao(userDao);
+			projectService.setCategoryDao(projectsCategoryDao);
 
 			UserServiceImpl userService = new UserServiceImpl();
 			userService.setUserDao(userDao);
@@ -82,7 +83,7 @@ public class ServiceLocator {
 			TasksCategoryServiceImpl tasksCategoryService = new TasksCategoryServiceImpl();
 			tasksCategoryService.setDao(tasksCategoryDao);
 
-			ProjectCategoryServiceImpl projectsCategoryService = new ProjectCategoryServiceImpl();
+			ProjectsCategoryServiceImpl projectsCategoryService = new ProjectsCategoryServiceImpl();
 			projectsCategoryService.setDao(projectsCategoryDao);
 
 			/* регистрация сервисов */
