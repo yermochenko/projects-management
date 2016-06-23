@@ -1,6 +1,8 @@
 package by.vsu.mf.ammc.pm.servlet;
 
-public class MainMenuItem {
+import java.io.Serializable;
+
+public class MainMenuItem implements Serializable {
 	private String url;
 	private String title;
 
