@@ -37,8 +37,8 @@ public class UserListServlet extends HttpServlet {
 				if(group != null) {
 					req.setAttribute("group", group);
 					UserService service = locator.getService(UserService.class);
-					List<User> types = service.findByGroup(group);
-					req.setAttribute("users", types);
+					List<User> users = service.findByGroup(group);
+					req.setAttribute("users", users);
 				}
 			}
 			req.getRequestDispatcher("/WEB-INF/jsp/admin/user/list.jsp").forward(req, resp);
