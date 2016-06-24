@@ -34,8 +34,8 @@ public class ProjectDaoImpl extends BaseDao implements ProjectDao {
 			} else {
 				statement.setNull(2, Types.VARCHAR);
 			}
-			statement.setInt(3, project.getManager().getId());
-			statement.setInt(4, project.getCategory().getId());
+			statement.setInt(3, project.getCategory().getId());
+			statement.setInt(4, project.getManager().getId());
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
 			resultSet.next();
