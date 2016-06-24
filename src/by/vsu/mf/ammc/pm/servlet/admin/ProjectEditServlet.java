@@ -18,9 +18,6 @@ import by.vsu.mf.ammc.pm.service.project.ProjectService;
 import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 import by.vsu.mf.ammc.pm.service.user.UserService;
 
-/**
- * Created by Pasha_R on 08.06.2016.
- */
 @WebServlet("/admin/project/edit.html")
 public class ProjectEditServlet extends HttpServlet {
 	@Override

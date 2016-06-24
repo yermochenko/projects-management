@@ -14,9 +14,6 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 
-/**
- * Created by likan on 10.06.2016.
- */
 @WebServlet("/admin/project/category/list.html")
 public class ProjectCategoryListServlet extends HttpServlet {
 	@Override

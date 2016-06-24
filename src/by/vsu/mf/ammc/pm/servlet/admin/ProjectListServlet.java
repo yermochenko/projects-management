@@ -1,5 +1,14 @@
 package by.vsu.mf.ammc.pm.servlet.admin;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import by.vsu.mf.ammc.pm.domain.project.Project;
 import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import by.vsu.mf.ammc.pm.exception.ServiceException;
@@ -7,17 +16,6 @@ import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.project.ProjectService;
 import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
-
-/**
- * Created by Pasha_R on 08.06.2016.
- */
 @WebServlet("/admin/project/list.html")
 public class ProjectListServlet extends HttpServlet {
 	@Override

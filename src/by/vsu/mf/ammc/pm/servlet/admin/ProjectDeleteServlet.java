@@ -13,9 +13,6 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.ServiceLocator;
 import by.vsu.mf.ammc.pm.service.project.ProjectService;
 
-/**
- * Created by Pasha_R on 08.06.2016.
- */
 @WebServlet("/admin/project/delete.html")
 public class ProjectDeleteServlet extends HttpServlet {
 	@Override
