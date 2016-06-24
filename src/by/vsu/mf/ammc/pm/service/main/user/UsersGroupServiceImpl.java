@@ -10,16 +10,16 @@ import by.vsu.mf.ammc.pm.service.HierarchyEntityHelper;
 import by.vsu.mf.ammc.pm.service.user.UsersGroupService;
 
 public class UsersGroupServiceImpl implements UsersGroupService {
-	private UsersGroupDao dao;
+	private UsersGroupDao usersGroupDao;
 
-	public void setDao(UsersGroupDao dao) {
-		this.dao = dao;
+	public void setUsersGroupDao(UsersGroupDao usersGroupDao) {
+		this.usersGroupDao = usersGroupDao;
 	}
 
 	@Override
 	public List<UsersGroup> findAll() throws ServiceException {
 		try {
-			List<UsersGroup> groups = dao.read();
+			List<UsersGroup> groups = usersGroupDao.read();
 			HierarchyEntityHelper.process(groups);
 			return groups;
 		} catch(DaoException e) {
@@ -30,7 +30,7 @@ public class UsersGroupServiceImpl implements UsersGroupService {
 	@Override
 	public UsersGroup findById(Integer id) throws ServiceException {
 		try {
-			return dao.read(id);
+			return usersGroupDao.read(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -40,9 +40,9 @@ public class UsersGroupServiceImpl implements UsersGroupService {
 	public void save(UsersGroup type) throws ServiceException {
 		try {
 			if(type.getId() != null) {
-				dao.update(type);
+				usersGroupDao.update(type);
 			} else {
-				Integer id = dao.create(type);
+				Integer id = usersGroupDao.create(type);
 				type.setId(id);
 			}
 		} catch(DaoException e) {
@@ -53,7 +53,7 @@ public class UsersGroupServiceImpl implements UsersGroupService {
 	@Override
 	public void delete(Integer id) throws ServiceException {
 		try {
-			dao.delete(id);
+			usersGroupDao.delete(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}

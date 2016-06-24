@@ -14,15 +14,15 @@ import by.vsu.mf.ammc.pm.service.project.ProjectService;
 
 public class ProjectServiceImpl implements ProjectService {
 	private ProjectDao projectDao;
-	private ProjectsCategoryDao categoryDao;
+	private ProjectsCategoryDao projectsCategoryDao;
 	private UserDao userDao;
 
 	public void setProjectDao(ProjectDao projectDao) {
 		this.projectDao = projectDao;
 	}
 
-	public void setCategoryDao(ProjectsCategoryDao categoryDao) {
-		this.categoryDao = categoryDao;
+	public void setProjectsCategoryDao(ProjectsCategoryDao projectsCategoryDao) {
+		this.projectsCategoryDao = projectsCategoryDao;
 	}
 
 	public void setUserDao(UserDao userDao) {
@@ -49,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
 		try {
 			Project project = projectDao.read(id);
 			ProjectsCategory category = project.getCategory();
-			category = categoryDao.read(category.getId());
+			category = projectsCategoryDao.read(category.getId());
 			project.setCategory(category);
 			User manager = project.getManager();
 			manager = userDao.read(manager.getId());

@@ -1,12 +1,10 @@
 package by.vsu.mf.ammc.pm.service.project;
 
-import by.vsu.mf.ammc.pm.exception.ServiceException;
-import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import java.util.List;
 
-/**
- * Created by likan on 10.06.2016.
- */
+import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
+import by.vsu.mf.ammc.pm.exception.ServiceException;
+
 public interface ProjectsCategoryService {
 	List<ProjectsCategory> findAll() throws ServiceException;
 

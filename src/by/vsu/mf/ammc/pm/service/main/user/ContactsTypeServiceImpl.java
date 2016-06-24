@@ -9,16 +9,16 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.user.ContactsTypeService;
 
 public class ContactsTypeServiceImpl implements ContactsTypeService {
-	private ContactsTypeDao dao;
+	private ContactsTypeDao contactsTypeDao;
 
-	public void setDao(ContactsTypeDao dao) {
-		this.dao = dao;
+	public void setContactsTypeDao(ContactsTypeDao contactsTypeDao) {
+		this.contactsTypeDao = contactsTypeDao;
 	}
 
 	@Override
 	public List<ContactsType> findAll() throws ServiceException {
 		try {
-			return dao.read();
+			return contactsTypeDao.read();
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -27,7 +27,7 @@ public class ContactsTypeServiceImpl implements ContactsTypeService {
 	@Override
 	public ContactsType findById(Integer id) throws ServiceException {
 		try {
-			return dao.read(id);
+			return contactsTypeDao.read(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -37,9 +37,9 @@ public class ContactsTypeServiceImpl implements ContactsTypeService {
 	public void save(ContactsType type) throws ServiceException {
 		try {
 			if(type.getId() != null) {
-				dao.update(type);
+				contactsTypeDao.update(type);
 			} else {
-				Integer id = dao.create(type);
+				Integer id = contactsTypeDao.create(type);
 				type.setId(id);
 			}
 		} catch(DaoException e) {
@@ -50,7 +50,7 @@ public class ContactsTypeServiceImpl implements ContactsTypeService {
 	@Override
 	public void delete(Integer id) throws ServiceException {
 		try {
-			dao.delete(id);
+			contactsTypeDao.delete(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}

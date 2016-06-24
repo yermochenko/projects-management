@@ -9,19 +9,17 @@ import by.vsu.mf.ammc.pm.exception.ServiceException;
 import by.vsu.mf.ammc.pm.service.HierarchyEntityHelper;
 import by.vsu.mf.ammc.pm.service.project.ProjectsCategoryService;
 
-/**
- * Created by likan on 10.06.2016.
- */
 public class ProjectsCategoryServiceImpl implements ProjectsCategoryService {
-	private ProjectsCategoryDao dao;
+	private ProjectsCategoryDao projectsCategoryDao;
 
-	public void setDao(ProjectsCategoryDao dao) {
-		this.dao = dao;
+	public void setProjectsCategoryDao(ProjectsCategoryDao projectsCategoryDao) {
+		this.projectsCategoryDao = projectsCategoryDao;
 	}
 
+	@Override
 	public List<ProjectsCategory> findAll() throws ServiceException {
 		try {
-			List<ProjectsCategory> categories = dao.read();
+			List<ProjectsCategory> categories = projectsCategoryDao.read();
 			HierarchyEntityHelper.process(categories);
 			return categories;
 		} catch(DaoException e) {
@@ -32,7 +30,7 @@ public class ProjectsCategoryServiceImpl implements ProjectsCategoryService {
 	@Override
 	public ProjectsCategory findById(Integer id) throws ServiceException {
 		try {
-			return dao.read(id);
+			return projectsCategoryDao.read(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -41,7 +39,7 @@ public class ProjectsCategoryServiceImpl implements ProjectsCategoryService {
 	@Override
 	public void delete(Integer id) throws ServiceException {
 		try {
-			dao.delete(id);
+			projectsCategoryDao.delete(id);
 		} catch(DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -51,9 +49,9 @@ public class ProjectsCategoryServiceImpl implements ProjectsCategoryService {
 	public void save(ProjectsCategory category) throws ServiceException {
 		try {
 			if(category.getId() != null) {
-				dao.update(category);
+				projectsCategoryDao.update(category);
 			} else {
-				Integer id = dao.create(category);
+				Integer id = projectsCategoryDao.create(category);
 				category.setId(id);
 			}
 		} catch(DaoException e) {

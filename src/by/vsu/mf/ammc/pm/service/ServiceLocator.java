@@ -62,7 +62,7 @@ public class ServiceLocator {
 
 			/* создание объектов слоя сервисов */
 			ContactsTypeServiceImpl contactsTypeService = new ContactsTypeServiceImpl();
-			contactsTypeService.setDao(contactsTypeDao);
+			contactsTypeService.setContactsTypeDao(contactsTypeDao);
 
 			TeamServiceImpl teamService = new TeamServiceImpl();
 			teamService.setTeamDao(teamDao);
@@ -71,20 +71,20 @@ public class ServiceLocator {
 			ProjectServiceImpl projectService = new ProjectServiceImpl();
 			projectService.setProjectDao(projectDao);
 			projectService.setUserDao(userDao);
-			projectService.setCategoryDao(projectsCategoryDao);
+			projectService.setProjectsCategoryDao(projectsCategoryDao);
 
 			UserServiceImpl userService = new UserServiceImpl();
 			userService.setUserDao(userDao);
 			userService.setUsersGroupDao(usersGroupDao);
 
 			UsersGroupServiceImpl usersGroupService = new UsersGroupServiceImpl();
-			usersGroupService.setDao(usersGroupDao);
+			usersGroupService.setUsersGroupDao(usersGroupDao);
 
 			TasksCategoryServiceImpl tasksCategoryService = new TasksCategoryServiceImpl();
-			tasksCategoryService.setDao(tasksCategoryDao);
+			tasksCategoryService.setTasksCategoryDao(tasksCategoryDao);
 
 			ProjectsCategoryServiceImpl projectsCategoryService = new ProjectsCategoryServiceImpl();
-			projectsCategoryService.setDao(projectsCategoryDao);
+			projectsCategoryService.setProjectsCategoryDao(projectsCategoryDao);
 
 			/* регистрация сервисов */
 			services.put(ContactsTypeService.class, contactsTypeService);
