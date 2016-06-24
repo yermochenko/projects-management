@@ -25,7 +25,7 @@ public class UsersGroupSaveServlet extends HttpServlet {
 			id = Integer.parseInt(req.getParameter("id"));
 		} catch(NumberFormatException e) {}
 		try {
-			parentId = Integer.parseInt(req.getParameter("parent_id"));
+			parentId = Integer.parseInt(req.getParameter("parent"));
 		} catch(NumberFormatException e) {}
 		if(name != null) {
 			UsersGroup group = new UsersGroup();
