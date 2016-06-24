@@ -37,7 +37,7 @@
 						</c:otherwise>
 					</c:choose>
 				</SELECT>
-				<LABEL for="name">Имя группы пользователей:</LABEL>
+				<LABEL for="name">Название группы пользователей:</LABEL>
 				<INPUT type="text" id="name" name="name" value="${group.name}">
 				<BUTTON type="submit">Сохранить</BUTTON>
 				<BUTTON type="reset">Очистить форму</BUTTON>
