@@ -13,9 +13,6 @@ import by.vsu.mf.ammc.pm.dao.project.ProjectsCategoryDao;
 import by.vsu.mf.ammc.pm.domain.project.ProjectsCategory;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
-/**
- * Created by Pasha_R on 06.06.2016.
- */
 public class ProjectsCategoryDaoImpl extends BaseDao implements ProjectsCategoryDao {
 	@Override
 	public Integer create(ProjectsCategory category) throws DaoException {

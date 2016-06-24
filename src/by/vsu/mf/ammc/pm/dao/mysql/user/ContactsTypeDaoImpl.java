@@ -13,9 +13,6 @@ import by.vsu.mf.ammc.pm.dao.user.ContactsTypeDao;
 import by.vsu.mf.ammc.pm.domain.user.ContactsType;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
-/**
- * Created by Борис on 19.05.2016.
- */
 public class ContactsTypeDaoImpl extends BaseDao implements ContactsTypeDao {
 	@Override
 	public Integer create(ContactsType contactsType) throws DaoException {

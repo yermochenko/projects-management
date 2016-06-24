@@ -15,10 +15,6 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Pasha_R on 03.06.2016.
- */
-
 public class ProjectDaoImpl extends BaseDao implements ProjectDao {
 	@Override
 	public Integer create(Project project) throws DaoException {

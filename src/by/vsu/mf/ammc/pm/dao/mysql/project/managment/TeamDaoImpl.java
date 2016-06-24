@@ -1,6 +1,9 @@
 package by.vsu.mf.ammc.pm.dao.mysql.project.managment;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +14,6 @@ import by.vsu.mf.ammc.pm.domain.project.management.Team;
 import by.vsu.mf.ammc.pm.domain.user.User;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
-/**
- * Created by Timofei on 20.05.2016.
- */
 public class TeamDaoImpl extends BaseDao implements TeamDao {
 	@Override
 	public Integer create(Team team) throws DaoException {

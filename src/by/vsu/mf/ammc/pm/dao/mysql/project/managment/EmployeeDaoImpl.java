@@ -13,9 +13,6 @@ import by.vsu.mf.ammc.pm.domain.project.management.Team;
 import by.vsu.mf.ammc.pm.domain.user.User;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
-/**
- * Created by Борис on 19.05.2016.
- */
 public class EmployeeDaoImpl extends BaseDao implements EmployeeDao {
 	@Override
 	public Integer create(Employee employee) throws DaoException {

@@ -1,6 +1,9 @@
 package by.vsu.mf.ammc.pm.dao.mysql.user;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +13,6 @@ import by.vsu.mf.ammc.pm.domain.user.User;
 import by.vsu.mf.ammc.pm.domain.user.UsersGroup;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
-/**
- * Created by Timofei on 20.05.2016.
- */
 public class UserDaoImpl extends BaseDao implements UserDao {
 	@Override
 	public Integer create(User user) throws DaoException {

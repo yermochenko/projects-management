@@ -12,14 +12,12 @@ import by.vsu.mf.ammc.pm.domain.project.Project;
 import by.vsu.mf.ammc.pm.exception.DaoException;
 
 public class ModuleDaoImpl extends BaseDao implements ModuleDao {
-
 	@Override
 	public Integer create(Module module) throws DaoException {
 		String sqlScript = "INSERT INTO  `module` (`name`, `parent_id`, `project_id`) VALUES (?,?,?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-
 		try {
 			statement = connection.prepareStatement(sqlScript, PreparedStatement.RETURN_GENERATED_KEYS);
 			statement.setString(1, module.getName());
@@ -32,16 +30,9 @@ public class ModuleDaoImpl extends BaseDao implements ModuleDao {
 		} catch (SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try {
-				resultSet.close();
-			} catch (NullPointerException | SQLException e) {
-			}
-			try {
-				statement.close();
-			} catch (NullPointerException | SQLException e) {
-			}
+			try { resultSet.close(); } catch (NullPointerException | SQLException e) {}
+			try { statement.close(); } catch (NullPointerException | SQLException e) {}
 		}
-
 	}
 
 	@Override
@@ -68,16 +59,9 @@ public class ModuleDaoImpl extends BaseDao implements ModuleDao {
 		} catch (SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try {
-				resultSet.close();
-			} catch (NullPointerException | SQLException e) {
-			}
-			try {
-				statement.close();
-			} catch (NullPointerException | SQLException e) {
-			}
+			try { resultSet.close(); } catch (NullPointerException | SQLException e) {}
+			try { statement.close(); } catch (NullPointerException | SQLException e) {}
 		}
-
 	}
 
 	@Override
@@ -95,12 +79,8 @@ public class ModuleDaoImpl extends BaseDao implements ModuleDao {
 		} catch (SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try {
-				statement.close();
-			} catch (NullPointerException | SQLException e) {
-			}
+			try { statement.close(); } catch (NullPointerException | SQLException e) {}
 		}
-
 	}
 
 	@Override
@@ -115,10 +95,7 @@ public class ModuleDaoImpl extends BaseDao implements ModuleDao {
 		} catch (SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try {
-				statement.close();
-			} catch (NullPointerException | SQLException e) {
-			}
+			try { statement.close(); } catch (NullPointerException | SQLException e) {}
 		}
 	}
 }
